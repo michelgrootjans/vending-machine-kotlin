@@ -26,4 +26,6 @@ class SelectProduct : StringSpec({
         machine.display() shouldBe "THANK YOU"
         machine.dispenser().shouldContainAll("candy")
     }
+
+    // TODO: product pricing
 })
