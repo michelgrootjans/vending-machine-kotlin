@@ -47,6 +47,9 @@ class SelectProduct : StringSpec({
 
         machine.display() shouldBe "THANK YOU"
         machine.dispenser().shouldContainAll("chips")
+
+        machine.tick()
+            .display() shouldBe "INSERT COIN"
     }
     "Buy candy" {
         val machine = VendingMachine()
@@ -54,5 +57,8 @@ class SelectProduct : StringSpec({
 
         machine.display() shouldBe "THANK YOU"
         machine.dispenser().shouldContainAll("candy")
+
+        machine.tick()
+            .display() shouldBe "INSERT COIN"
     }
 })
