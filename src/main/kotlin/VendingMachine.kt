@@ -15,16 +15,21 @@ class VendingMachine(
     fun pressButton2(): VendingMachine =
         VendingMachine(-2.00, coinReject)
 
+    fun pressButton3(): VendingMachine =
+        VendingMachine(-3.00, coinReject)
+
     fun display(): String = when (balance) {
         0.00 -> "INSERT COIN"
         -1.00 -> "THANK YOU"
         -2.00 -> "THANK YOU"
+        -3.00 -> "THANK YOU"
         else -> "%.2f".format(balance)
     }
 
     fun dispenser(): List<String> = when (balance) {
         -1.00 -> listOf("cola")
         -2.00 -> listOf("chips")
+        -3.00 -> listOf("candy")
         else -> emptyList()
     }
 

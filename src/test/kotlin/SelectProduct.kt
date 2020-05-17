@@ -19,4 +19,11 @@ class SelectProduct : StringSpec({
         machine.display() shouldBe "THANK YOU"
         machine.dispenser().shouldContainAll("chips")
     }
+    "Buy candy" {
+        val machine = VendingMachine()
+            .pressButton3()
+
+        machine.display() shouldBe "THANK YOU"
+        machine.dispenser().shouldContainAll("candy")
+    }
 })
