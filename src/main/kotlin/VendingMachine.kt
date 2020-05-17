@@ -18,6 +18,10 @@ class VendingMachine(
         else -> "%.2f".format(balance)
     }
 
+    fun dispenser(): List<String> {
+        return listOf("cola")
+    }
+
     fun coinReject(): List<Coin> {
         return coinReject
     }

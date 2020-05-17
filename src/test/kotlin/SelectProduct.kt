@@ -1,5 +1,6 @@
 package vendingmachine
 
+import io.kotlintest.matchers.collections.shouldContainAll
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 
@@ -13,5 +14,6 @@ class SelectProduct : StringSpec({
             .pressButton()
 
         machine.display() shouldBe "THANK YOU"
+        machine.dispenser().shouldContainAll("cola")
     }
 })
