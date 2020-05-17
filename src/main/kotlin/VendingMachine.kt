@@ -2,15 +2,17 @@ package vendingmachine
 
 class VendingMachine(
     val balance: Double = 0.00,
-    val coinReject: List<Coin> = emptyList(),
     val dispenser: List<String> = emptyList(),
+    val coinReject: List<Coin> = emptyList(),
     val defaultMessage: String = "INSERT COIN"
 ) {
     val products = listOf("cola", "chips", "candy")
 
+    fun tick() = VendingMachine(balance, dispenser, coinReject)
+
     fun insert(coin: Coin): VendingMachine =
-        if (isValid(coin)) VendingMachine(balance + valueOf(coin), coinReject)
-        else VendingMachine(balance, coinReject + coin)
+        if (isValid(coin)) VendingMachine(balance + valueOf(coin), coinReject = coinReject)
+        else VendingMachine(balance, coinReject = coinReject + coin)
 
     fun pressButton1(): VendingMachine = dispense(0)
     fun pressButton2(): VendingMachine = dispense(1)
@@ -19,8 +21,8 @@ class VendingMachine(
     private fun dispense(productNumber: Int) =
         VendingMachine(
             0.00,
-            coinReject,
             dispenser + products[productNumber],
+            coinReject,
             "THANK YOU"
         )
 
