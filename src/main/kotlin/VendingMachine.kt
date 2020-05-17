@@ -13,7 +13,7 @@ class VendingMachine(
         else VendingMachine(balance, coinReject + coin)
 
     fun pressButton1(): VendingMachine =
-        VendingMachine(-1.00, coinReject, dispenser + "cola")
+        VendingMachine(-1.00, coinReject, dispenser + "cola", "THANK YOU")
 
     fun pressButton2(): VendingMachine =
         VendingMachine(-1.00, coinReject, dispenser + "chips")
