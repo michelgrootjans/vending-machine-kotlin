@@ -16,7 +16,7 @@ class VendingMachine(
         VendingMachine(0.00, coinReject, dispenser + products[0], "THANK YOU")
 
     fun pressButton2(): VendingMachine =
-        VendingMachine(0.00, coinReject, dispenser + "chips", "THANK YOU")
+        VendingMachine(0.00, coinReject, dispenser + products[1], "THANK YOU")
 
     fun pressButton3(): VendingMachine =
         VendingMachine(0.00, coinReject, dispenser + "candy", "THANK YOU")
