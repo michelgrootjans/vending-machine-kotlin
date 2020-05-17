@@ -29,7 +29,6 @@ class VendingMachine(
     }
 
     fun dispenser(): List<String> = when (balance) {
-        -1.00 -> listOf("cola")
         -2.00 -> listOf("chips")
         -3.00 -> listOf("candy")
         else -> dispenser
