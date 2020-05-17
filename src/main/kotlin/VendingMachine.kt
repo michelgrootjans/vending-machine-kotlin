@@ -32,7 +32,7 @@ class VendingMachine(
         -1.00 -> listOf("cola")
         -2.00 -> listOf("chips")
         -3.00 -> listOf("candy")
-        else -> emptyList()
+        else -> dispenser
     }
 
     fun coinReject(): List<Coin> {
