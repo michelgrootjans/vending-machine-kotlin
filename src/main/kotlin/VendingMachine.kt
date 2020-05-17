@@ -19,7 +19,7 @@ class VendingMachine(
         VendingMachine(0.00, coinReject, dispenser + products[1], "THANK YOU")
 
     fun pressButton3(): VendingMachine =
-        VendingMachine(0.00, coinReject, dispenser + "candy", "THANK YOU")
+        VendingMachine(0.00, coinReject, dispenser + products[2], "THANK YOU")
 
     fun display(): String = when (balance) {
         0.00 -> defaultMessage
