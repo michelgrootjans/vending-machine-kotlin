@@ -16,7 +16,13 @@ class VendingMachine(
     fun pressButton2(): VendingMachine = dispense(1)
     fun pressButton3(): VendingMachine = dispense(2)
 
-    private fun dispense(productNumber: Int) = VendingMachine(0.00, coinReject, dispenser + products[productNumber], "THANK YOU")
+    private fun dispense(productNumber: Int) =
+        VendingMachine(
+            0.00,
+            coinReject,
+            dispenser + products[productNumber],
+            "THANK YOU"
+        )
 
     fun display(): String = when (balance) {
         0.00 -> defaultMessage
