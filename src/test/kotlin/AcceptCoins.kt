@@ -5,7 +5,7 @@ import io.kotlintest.matchers.collections.shouldContainAll
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 
-class InsertCoin : StringSpec({
+class AcceptCoins : StringSpec({
     "At rest" {
         val machine = VendingMachine()
 
