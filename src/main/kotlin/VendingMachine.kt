@@ -3,7 +3,8 @@ package vendingmachine
 class VendingMachine(
     val balance: Double = 0.00,
     val coinReject: List<Coin> = emptyList(),
-    val dispenser: List<String> = emptyList()
+    val dispenser: List<String> = emptyList(),
+    val defaultMessage: String = "INSERT COIN"
 ) {
     val products = listOf("cola", "chips", "candy")
 
