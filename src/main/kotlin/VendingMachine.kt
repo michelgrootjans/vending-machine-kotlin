@@ -23,8 +23,6 @@ class VendingMachine(
     fun display(): String = when (balance) {
         0.00 -> "INSERT COIN"
         -1.00 -> "THANK YOU"
-        -2.00 -> "THANK YOU"
-        -3.00 -> "THANK YOU"
         else -> "%.2f".format(balance)
     }
 
