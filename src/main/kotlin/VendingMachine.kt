@@ -18,7 +18,7 @@ class VendingMachine(
         VendingMachine(-2.00, coinReject, dispenser + "chips")
 
     fun pressButton3(): VendingMachine =
-        VendingMachine(-3.00, coinReject)
+        VendingMachine(-3.00, coinReject, dispenser + "candy")
 
     fun display(): String = when (balance) {
         0.00 -> "INSERT COIN"
