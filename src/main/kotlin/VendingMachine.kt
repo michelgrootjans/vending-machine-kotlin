@@ -9,17 +9,23 @@ class VendingMachine(
         if (isValid(coin)) VendingMachine(balance + valueOf(coin), coinReject)
         else VendingMachine(balance, coinReject + coin)
 
-    fun pressButton(): VendingMachine =
+    fun pressButton1(): VendingMachine =
         VendingMachine(-1.00, coinReject)
+
+    fun pressButton2(): VendingMachine =
+        VendingMachine(-2.00, coinReject)
 
     fun display(): String = when (balance) {
         0.00 -> "INSERT COIN"
         -1.00 -> "THANK YOU"
+        -2.00 -> "THANK YOU"
         else -> "%.2f".format(balance)
     }
 
-    fun dispenser(): List<String> {
-        return listOf("cola")
+    fun dispenser(): List<String> = when (balance) {
+        -1.00 -> listOf("cola")
+        -2.00 -> listOf("chips")
+        else -> emptyList()
     }
 
     fun coinReject(): List<Coin> {

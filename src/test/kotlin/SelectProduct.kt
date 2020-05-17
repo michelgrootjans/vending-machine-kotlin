@@ -7,9 +7,16 @@ import io.kotlintest.specs.StringSpec
 class SelectProduct : StringSpec({
     "Buy a cola" {
         val machine = VendingMachine()
-            .pressButton()
+            .pressButton1()
 
         machine.display() shouldBe "THANK YOU"
         machine.dispenser().shouldContainAll("cola")
+    }
+    "Buy chips" {
+        val machine = VendingMachine()
+            .pressButton2()
+
+        machine.display() shouldBe "THANK YOU"
+        machine.dispenser().shouldContainAll("chips")
     }
 })
