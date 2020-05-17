@@ -7,10 +7,10 @@ import io.kotlintest.specs.StringSpec
 class SelectProduct : StringSpec({
     "Buy a cola" {
         val machine = VendingMachine()
-            .insert(quarter())
-            .insert(quarter())
-            .insert(quarter())
-            .insert(quarter())
+//            .insert(quarter())
+//            .insert(quarter())
+//            .insert(quarter())
+//            .insert(quarter())
             .pressButton()
 
         machine.display() shouldBe "THANK YOU"
