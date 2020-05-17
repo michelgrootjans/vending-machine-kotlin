@@ -22,7 +22,7 @@ class VendingMachine(
         VendingMachine(-1.00, coinReject, dispenser + "candy")
 
     fun display(): String = when (balance) {
-        0.00 -> "INSERT COIN"
+        0.00 -> defaultMessage
         -1.00 -> "THANK YOU"
         else -> "%.2f".format(balance)
     }
