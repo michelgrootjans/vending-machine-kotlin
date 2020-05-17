@@ -1,14 +1,21 @@
 package vendingmachine
 
-class VendingMachine(val balance: Double = 0.00,
-                     val coinReject: List<Coin> = emptyList()) {
+class VendingMachine(
+    val balance: Double = 0.00,
+    val coinReject: List<Coin> = emptyList()
+) {
 
     fun insert(coin: Coin): VendingMachine =
-            if (isValid(coin)) VendingMachine(balance + valueOf(coin), coinReject)
-            else VendingMachine(balance, coinReject + coin)
+        if (isValid(coin)) VendingMachine(balance + valueOf(coin), coinReject)
+        else VendingMachine(balance, coinReject + coin)
+
+    fun pressButton(): VendingMachine =
+        VendingMachine(-1.00, coinReject)
+
 
     fun display(): String = when (balance) {
         0.00 -> "INSERT COIN"
+        -1.00 -> "THANK YOU"
         else -> "%.2f".format(balance)
     }
 
