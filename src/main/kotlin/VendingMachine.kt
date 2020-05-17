@@ -4,6 +4,7 @@ class VendingMachine(
     val balance: Double = 0.00,
     val coinReject: List<Coin> = emptyList()
 ) {
+    val products = listOf("cola", "chips", "candy")
 
     fun insert(coin: Coin): VendingMachine =
         if (isValid(coin)) VendingMachine(balance + valueOf(coin), coinReject)
