@@ -19,9 +19,8 @@ class VendingMachine(
         else VendingMachine(balance, coinReject = coinReject + coin)
 
 
-    fun press(button: Button): VendingMachine {
-        return dispense(inventory.getValue(1))
-    }
+    fun press(button: Button): VendingMachine = dispense(inventory.getValue(1))
+
 
     fun pressButton1(): VendingMachine = dispense(inventory.getValue(1))
     fun pressButton2(): VendingMachine = dispense(inventory.getValue(2))
