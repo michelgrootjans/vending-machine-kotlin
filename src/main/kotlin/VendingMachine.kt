@@ -19,7 +19,7 @@ class VendingMachine(
 
     fun pressButton1(): VendingMachine {
         if(balance >= products2[0].price)
-            return dispense(products[0])
+            return dispense(products2[0].name)
         return VendingMachine(
                 0.00,
                 dispenser,
