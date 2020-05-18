@@ -11,6 +11,11 @@ class VendingMachine(
             Product("chips", 0.50),
             Product("candy", 0.65)
     )
+    val inventory = mapOf(
+            1 to Product("cola", 1.00),
+            2 to Product("chips", 0.50),
+            3 to Product("candy", 0.65)
+    )
 
     fun tick() = VendingMachine(balance, dispenser, coinReject)
 
@@ -18,7 +23,7 @@ class VendingMachine(
         if (isValid(coin)) VendingMachine(balance + valueOf(coin), coinReject = coinReject)
         else VendingMachine(balance, coinReject = coinReject + coin)
 
-    fun pressButton1(): VendingMachine = pressButton(0)
+    fun pressButton1(): VendingMachine = dispense(inventory.getValue(1))
     fun pressButton2(): VendingMachine = pressButton(1)
     fun pressButton3(): VendingMachine = pressButton(2)
 
