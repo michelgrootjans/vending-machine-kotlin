@@ -52,10 +52,7 @@ class VendingMachine(
     }
 
     fun dispenser(): List<String> = dispenser
-
-    fun coinReject(): List<Coin> {
-        return coinReject
-    }
+    fun coinReject(): List<Coin> = coinReject
 
     private fun isValid(coin: Coin): Boolean = listOf(nickel(), dime(), quarter()).contains(coin)
 
