@@ -24,7 +24,19 @@ class VendingMachine(
 
     private fun dispense2(product: Product): VendingMachine {
         if (balance >= product.price) {
-            return dispense(product.name)
+            if(balance > 0.00)
+                return VendingMachine(
+                        0.00,
+                        dispenser + product.name,
+                        coinReject,
+                        "THANK YOU"
+                )
+            return VendingMachine(
+                    balance,
+                    dispenser,
+                    coinReject,
+                    "PRICE 1.00"
+            )
         }
         return VendingMachine(
                 0.00,
