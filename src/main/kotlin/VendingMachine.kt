@@ -17,9 +17,7 @@ class VendingMachine(
         if (isValid(coin)) VendingMachine(balance + valueOf(coin), coinReject = coinReject)
         else VendingMachine(balance, coinReject = coinReject + coin)
 
-    fun pressButton1(): VendingMachine {
-        return dispense2()
-    }
+    fun pressButton1(): VendingMachine = dispense2()
 
     private fun dispense2(): VendingMachine {
         if (balance >= products2[0].price)
