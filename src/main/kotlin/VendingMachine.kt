@@ -9,7 +9,8 @@ class VendingMachine(
     val products = listOf("cola", "chips", "candy")
     val products2 = listOf(
             Product("cola", 1.00),
-            Product("chips", 0.50)
+            Product("chips", 0.50),
+            Product("candy", 0.65)
     )
 
     fun tick() = VendingMachine(balance, dispenser, coinReject)
