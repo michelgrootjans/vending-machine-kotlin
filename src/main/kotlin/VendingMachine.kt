@@ -31,7 +31,7 @@ class VendingMachine(
         )
     }
 
-    fun pressButton2(): VendingMachine = dispense(products[1])
+    fun pressButton2(): VendingMachine = dispense2(products2[1])
     fun pressButton3(): VendingMachine = dispense(products[2])
 
     private fun dispense(product: String): VendingMachine {
