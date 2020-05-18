@@ -18,7 +18,7 @@ class VendingMachine(
         if(balance >= 1.00)
             return dispense(products[0])
         return VendingMachine(
-                0.0,
+                0.00,
                 dispenser,
                 coinReject,
                 "PRICE 1.00"
