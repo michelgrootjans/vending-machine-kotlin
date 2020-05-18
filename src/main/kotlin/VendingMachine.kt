@@ -6,11 +6,6 @@ class VendingMachine(
     val coinReject: List<Coin> = emptyList(),
     val defaultMessage: String = "INSERT COIN"
 ) {
-    val products = listOf(
-            Product("cola", 1.00),
-            Product("chips", 0.50),
-            Product("candy", 0.65)
-    )
     val inventory = mapOf(
             1 to Product("cola", 1.00),
             2 to Product("chips", 0.50),
