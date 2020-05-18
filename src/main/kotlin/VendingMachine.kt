@@ -65,5 +65,11 @@ class VendingMachine(
 }
 
 data class Product(val name: String, val price: Double)
-class Button(number: Integer)
-
+class Button(number: Int) {
+    init {
+        when (number) {
+            1, 2, 3 -> {}
+            else -> throw Throwable("Invalid button number")
+        }
+    }
+}
