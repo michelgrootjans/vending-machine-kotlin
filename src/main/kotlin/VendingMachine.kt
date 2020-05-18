@@ -65,3 +65,5 @@ class VendingMachine(
 }
 
 data class Product(val name: String, val price: Double)
+class Button(number: Integer)
+
