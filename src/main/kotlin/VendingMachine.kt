@@ -18,7 +18,11 @@ class VendingMachine(
         else VendingMachine(balance, coinReject = coinReject + coin)
 
     fun pressButton1(): VendingMachine {
-        if(balance >= products2[0].price)
+        return dispense2()
+    }
+
+    private fun dispense2(): VendingMachine {
+        if (balance >= products2[0].price)
             return dispense(products2[0].name)
         return VendingMachine(
                 0.00,
@@ -27,6 +31,7 @@ class VendingMachine(
                 "PRICE %.2f".format(products2[0].price)
         )
     }
+
     fun pressButton2(): VendingMachine = dispense(products[1])
     fun pressButton3(): VendingMachine = dispense(products[2])
 
