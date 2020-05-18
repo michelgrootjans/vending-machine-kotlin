@@ -46,22 +46,6 @@ class VendingMachine(
         )
     }
 
-    private fun dispense(product: String): VendingMachine {
-        if(balance > 0.00)
-        return VendingMachine(
-                0.00,
-                dispenser + product,
-                coinReject,
-                "THANK YOU"
-        )
-        return VendingMachine(
-                balance,
-                dispenser,
-                coinReject,
-                "PRICE 1.00"
-        )
-    }
-
     fun display(): String = when (balance) {
         0.00 -> defaultMessage
         else -> "%.2f".format(balance)
