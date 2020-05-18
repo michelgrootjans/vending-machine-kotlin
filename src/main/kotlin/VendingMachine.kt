@@ -18,6 +18,11 @@ class VendingMachine(
         if (isValid(coin)) VendingMachine(balance + valueOf(coin), coinReject = coinReject)
         else VendingMachine(balance, coinReject = coinReject + coin)
 
+
+    fun press(button: Button): VendingMachine {
+        return dispense(inventory.getValue(1))
+    }
+
     fun pressButton1(): VendingMachine = dispense(inventory.getValue(1))
     fun pressButton2(): VendingMachine = dispense(inventory.getValue(2))
     fun pressButton3(): VendingMachine = dispense(inventory.getValue(3))

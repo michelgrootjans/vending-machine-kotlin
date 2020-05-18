@@ -49,7 +49,7 @@ class SelectProduct : StringSpec({
                 .insert(quarter())
                 .insert(quarter())
                 .insert(quarter())
-                .pressButton1()
+                .press(Button(1))
 
         machine.display() shouldBe "THANK YOU"
         machine.dispenser().shouldContainAll("cola")
