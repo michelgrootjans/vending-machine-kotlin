@@ -23,8 +23,9 @@ class VendingMachine(
     fun pressButton3(): VendingMachine = dispense2(products[2])
 
     private fun dispense2(product: Product): VendingMachine {
-        if (balance >= product.price)
+        if (balance >= product.price) {
             return dispense(product.name)
+        }
         return VendingMachine(
                 0.00,
                 dispenser,
