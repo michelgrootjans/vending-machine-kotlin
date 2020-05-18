@@ -24,7 +24,7 @@ class VendingMachine(
                 0.00,
                 dispenser,
                 coinReject,
-                "PRICE %.2f".format(1.00)
+                "PRICE %.2f".format(products2[0].price)
         )
     }
     fun pressButton2(): VendingMachine = dispense(products[1])
