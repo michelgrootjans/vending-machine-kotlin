@@ -37,6 +37,9 @@ class SelectProduct : StringSpec({
     "Buy a cola" {
         val machine = VendingMachine()
                 .insert(quarter())
+                .insert(quarter())
+                .insert(quarter())
+                .insert(quarter())
                 .pressButton1()
 
         machine.display() shouldBe "THANK YOU"
