@@ -51,9 +51,7 @@ class VendingMachine(
         else -> "%.2f".format(balance)
     }
 
-    fun dispenser(): List<String> = when (balance) {
-        else -> dispenser
-    }
+    fun dispenser(): List<String> = dispenser
 
     fun coinReject(): List<Coin> {
         return coinReject
