@@ -1,5 +1,7 @@
 package vendingmachine
 
+import io.kotlintest.matchers.collections.shouldBeEmpty
+import io.kotlintest.matchers.collections.shouldBeSortedWith
 import io.kotlintest.matchers.collections.shouldContainAll
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
@@ -26,39 +28,43 @@ import io.kotlintest.specs.StringSpec
 class SelectProduct : StringSpec({
     "Insufficient funds" {
         val machine = VendingMachine()
-            .pressButton1()
+                .pressButton1()
 
-        machine.display() shouldBe "THANK YOU"
-        machine.dispenser().shouldContainAll("cola")
+
+        machine.display() shouldBe "PRICE 1.00"
+        machine.dispenser().shouldBeEmpty()
     }
     "Buy a cola" {
         val machine = VendingMachine()
-            .pressButton1()
+                .insert(quarter())
+                .pressButton1()
 
         machine.display() shouldBe "THANK YOU"
         machine.dispenser().shouldContainAll("cola")
 
         machine.tick()
-            .display() shouldBe "INSERT COIN"
+                .display() shouldBe "INSERT COIN"
     }
     "Buy chips" {
         val machine = VendingMachine()
-            .pressButton2()
+                .insert(quarter())
+                .pressButton2()
 
         machine.display() shouldBe "THANK YOU"
         machine.dispenser().shouldContainAll("chips")
 
         machine.tick()
-            .display() shouldBe "INSERT COIN"
+                .display() shouldBe "INSERT COIN"
     }
     "Buy candy" {
         val machine = VendingMachine()
-            .pressButton3()
+                .insert(quarter())
+                .pressButton3()
 
         machine.display() shouldBe "THANK YOU"
         machine.dispenser().shouldContainAll("candy")
 
         machine.tick()
-            .display() shouldBe "INSERT COIN"
+                .display() shouldBe "INSERT COIN"
     }
 })

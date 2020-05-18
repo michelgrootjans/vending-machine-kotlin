@@ -18,13 +18,21 @@ class VendingMachine(
     fun pressButton2(): VendingMachine = dispense(1)
     fun pressButton3(): VendingMachine = dispense(2)
 
-    private fun dispense(productNumber: Int) =
-        VendingMachine(
-            0.00,
-            dispenser + products[productNumber],
-            coinReject,
-            "THANK YOU"
+    private fun dispense(productNumber: Int): VendingMachine {
+        if(balance > 0)
+        return VendingMachine(
+                0.00,
+                dispenser + products[productNumber],
+                coinReject,
+                "THANK YOU"
         )
+        return VendingMachine(
+                balance,
+                dispenser,
+                coinReject,
+                "PRICE 1.00"
+        )
+    }
 
     fun display(): String = when (balance) {
         0.00 -> defaultMessage
