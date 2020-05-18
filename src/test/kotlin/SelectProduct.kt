@@ -26,10 +26,19 @@ import io.kotlintest.specs.StringSpec
 //   either INSERT COIN
 //   or the current amount as appropriate.
 class SelectProduct : StringSpec({
-    "Insufficient funds" {
+    "No funds for cola" {
         val machine = VendingMachine()
                 .pressButton1()
 
+        machine.display() shouldBe "PRICE 1.00"
+        machine.dispenser().shouldBeEmpty()
+    }
+    "Insufficient funds for cola" {
+        val machine = VendingMachine()
+                .insert(quarter())
+                .insert(quarter())
+                .insert(quarter())
+                .pressButton1()
 
         machine.display() shouldBe "PRICE 1.00"
         machine.dispenser().shouldBeEmpty()
@@ -51,6 +60,8 @@ class SelectProduct : StringSpec({
     "Buy chips" {
         val machine = VendingMachine()
                 .insert(quarter())
+                .insert(quarter())
+                .insert(quarter())
                 .pressButton2()
 
         machine.display() shouldBe "THANK YOU"
@@ -62,6 +73,9 @@ class SelectProduct : StringSpec({
     "Buy candy" {
         val machine = VendingMachine()
                 .insert(quarter())
+                .insert(quarter())
+                .insert(dime())
+                .insert(nickel())
                 .pressButton3()
 
         machine.display() shouldBe "THANK YOU"
