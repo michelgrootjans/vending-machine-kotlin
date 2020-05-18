@@ -62,7 +62,7 @@ class SelectProduct : StringSpec({
                 .insert(quarter())
                 .insert(quarter())
                 .insert(quarter())
-                .pressButton2()
+                .press(Button(2))
 
         machine.display() shouldBe "THANK YOU"
         machine.dispenser().shouldContainAll("chips")
