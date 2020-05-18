@@ -7,6 +7,7 @@ class VendingMachine(
     val defaultMessage: String = "INSERT COIN"
 ) {
     val products = listOf("cola", "chips", "candy")
+    val products2 = listOf(Product("cola", 1.00))
 
     fun tick() = VendingMachine(balance, dispenser, coinReject)
 
@@ -64,4 +65,8 @@ class VendingMachine(
         quarter() -> 0.25
         else -> 0.00
     }
+}
+
+class Product(name: String, price: Double) {
+
 }
