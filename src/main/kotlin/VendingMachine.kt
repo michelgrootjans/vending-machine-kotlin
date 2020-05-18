@@ -18,8 +18,8 @@ class VendingMachine(
         if (isValid(coin)) VendingMachine(balance + valueOf(coin), coinReject = coinReject)
         else VendingMachine(balance, coinReject = coinReject + coin)
 
-    fun pressButton1(): VendingMachine = dispense(products[0])
-    fun pressButton2(): VendingMachine = dispense(products[1])
+    fun pressButton1(): VendingMachine = pressButton(0)
+    fun pressButton2(): VendingMachine = pressButton(1)
     fun pressButton3(): VendingMachine = pressButton(2)
 
     private fun pressButton(buttonIndex: Int) = dispense(products[buttonIndex])
