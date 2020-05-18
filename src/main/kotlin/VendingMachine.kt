@@ -65,7 +65,7 @@ class VendingMachine(
 }
 
 data class Product(val name: String, val price: Double)
-class Button(number: Int) {
+data class Button(val number: Int) {
     init {
         when (number) {
             1, 2, 3 -> {}
