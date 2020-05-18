@@ -20,7 +20,9 @@ class VendingMachine(
 
     fun pressButton1(): VendingMachine = dispense(products[0])
     fun pressButton2(): VendingMachine = dispense(products[1])
-    fun pressButton3(): VendingMachine = dispense(products[2])
+    fun pressButton3(): VendingMachine = pressButton(2)
+
+    private fun pressButton(buttonIndex: Int) = dispense(products[buttonIndex])
 
     private fun dispense(product: Product): VendingMachine {
         if (balance >= product.price) {
