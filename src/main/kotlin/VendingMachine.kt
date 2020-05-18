@@ -22,6 +22,7 @@ class VendingMachine(
     fun press(button: Button): VendingMachine = dispense(inventory.getValue(button.number))
 
     private fun dispense(product: Product): VendingMachine {
+        // warning: ugly code ahead
         if (balance >= product.price) {
             if(balance > 0.00)
                 return VendingMachine(
