@@ -8,7 +8,8 @@ class VendingMachine(
 ) {
     val products = listOf("cola", "chips", "candy")
     val products2 = listOf(
-            Product("cola", 1.00)
+            Product("cola", 1.00),
+            Product("chips", 0.50)
     )
 
     fun tick() = VendingMachine(balance, dispenser, coinReject)
