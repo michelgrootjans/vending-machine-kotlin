@@ -19,7 +19,6 @@ class VendingMachine(
         else VendingMachine(balance, coinReject = coinReject + coin)
 
 
-    fun press(button: Button): VendingMachine = dispense(inventory.getValue(button.number))
     fun pressButton1(): VendingMachine = dispense(inventory.getValue(1))
     fun pressButton2(): VendingMachine = dispense(inventory.getValue(2))
     fun pressButton3(): VendingMachine = dispense(inventory.getValue(3))
@@ -68,11 +67,3 @@ class VendingMachine(
 }
 
 data class Product(val name: String, val price: Double)
-data class Button(val number: Int) {
-    init {
-        when (number) {
-            1, 2, 3 -> {}
-            else -> throw Throwable("Invalid button number")
-        }
-    }
-}
