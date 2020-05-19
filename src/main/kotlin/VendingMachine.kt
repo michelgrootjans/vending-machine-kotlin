@@ -6,6 +6,8 @@ class VendingMachine(
     val coinReject: List<Coin> = emptyList(),
     val defaultMessage: String = "INSERT COIN"
 ) {
+    data class Product(val name: String, val price: Double)
+
     val inventory = mapOf(
             1 to Product("cola", 1.00),
             2 to Product("chips", 0.50),
@@ -66,4 +68,3 @@ class VendingMachine(
     }
 }
 
-data class Product(val name: String, val price: Double)
