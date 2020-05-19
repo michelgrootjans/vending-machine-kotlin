@@ -67,4 +67,3 @@ class VendingMachine(
         else -> 0.00
     }
 }
-
