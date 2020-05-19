@@ -28,7 +28,7 @@ import io.kotlintest.specs.StringSpec
 class SelectProduct : StringSpec({
     "No funds for cola" {
         val machine = VendingMachine()
-                .press(Button(1))
+                .pressButton1()
 
         machine.display() shouldBe "PRICE 1.00"
         machine.dispenser().shouldBeEmpty()
