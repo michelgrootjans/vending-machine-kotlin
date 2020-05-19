@@ -22,6 +22,7 @@ class VendingMachine(
     fun press(button: Button): VendingMachine = dispense(inventory.getValue(button.number))
     fun pressButton1(): VendingMachine = dispense(inventory.getValue(1))
     fun pressButton2(): VendingMachine = dispense(inventory.getValue(2))
+    fun pressButton3(): VendingMachine = dispense(inventory.getValue(3))
 
     private fun dispense(product: Product): VendingMachine {
         // warning: ugly code ahead
