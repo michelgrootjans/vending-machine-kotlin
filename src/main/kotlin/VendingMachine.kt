@@ -23,6 +23,14 @@ class VendingMachine(
     fun pressButton2(): VendingMachine = dispense(inventory.getValue(2))
     fun pressButton3(): VendingMachine = dispense(inventory.getValue(3))
 
+    fun display(): String = when (balance) {
+        0.00 -> defaultMessage
+        else -> "%.2f".format(balance)
+    }
+
+    fun dispenser(): List<String> = dispenser
+    fun coinReject(): List<Coin> = coinReject
+
     private fun dispense(product: Product): VendingMachine {
         // warning: ugly code ahead
         if (balance >= product.price) {
@@ -47,14 +55,6 @@ class VendingMachine(
                 "PRICE %.2f".format(product.price)
         )
     }
-
-    fun display(): String = when (balance) {
-        0.00 -> defaultMessage
-        else -> "%.2f".format(balance)
-    }
-
-    fun dispenser(): List<String> = dispenser
-    fun coinReject(): List<Coin> = coinReject
 
     private fun isValid(coin: Coin): Boolean = listOf(nickel(), dime(), quarter()).contains(coin)
 
