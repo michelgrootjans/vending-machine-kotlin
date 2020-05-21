@@ -13,7 +13,7 @@ class VendingMachine(
     fun coinReject(): List<Coin> = coinReject.coins
 
     fun insert(coin: Coin): VendingMachine = when {
-        isValid(coin) -> vendingMachine(balance = balance.add(valueOf(coin)))
+        isValid(coin) -> vendingMachine(balance = balance.add(valueOf(coin), coin))
         else -> vendingMachine(coinReject = coinReject.add(coin))
     }
 
