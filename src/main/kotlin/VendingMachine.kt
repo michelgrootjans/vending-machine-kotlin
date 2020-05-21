@@ -9,7 +9,7 @@ class VendingMachine(
 
     fun tick(): VendingMachine = vendingMachine(display = DefaultDisplay())
 
-    fun display(): String = display.show(balance)
+    fun display(): String = display.show(balance, balance2)
     fun dispenser(): List<String> = dispenser.items
     fun coinReject(): List<Coin> = coinReject
 
@@ -27,8 +27,6 @@ class VendingMachine(
                 vendingMachine(balance = 0.00, balance2 = balance2.subtract(product.price), display = SaleSuccessful(), dispenser = dispenser.dispense(product.name))
             else
                 vendingMachine(display = SaleFailed(product))
-
-    private fun sufficientFundsFor(product: Product) = balance >= product.price
 
     private fun isValid(coin: Coin): Boolean = listOf(nickel(), dime(), quarter()).contains(coin)
 
@@ -48,12 +46,10 @@ class VendingMachine(
     ): VendingMachine = VendingMachine(balance, display, dispenser, coinReject, balance2)
 }
 
-class Balance(val balance: Double = 0.00) {
-    fun add(amaount: Double): Balance = Balance(balance + amaount)
+class Balance(private val balance: Double = 0.00) {
+    fun isSufficientFor(amount: Double): Boolean = amount <= balance
+    fun add(amount: Double): Balance = Balance(balance + amount)
     fun subtract(amount: Double): Balance = Balance(balance - amount)
-    fun isSufficientFor(amount: Double): Boolean {
-        return amount <= balance
-    }
 
 }
 
