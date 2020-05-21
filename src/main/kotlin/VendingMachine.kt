@@ -2,7 +2,7 @@ class VendingMachine(
         private val balance: Double = 0.00,
         private val display: Display = DefaultDisplay(),
         private val coinReject: List<Coin> = emptyList(),
-        private val dispenser2: Dispenser = Dispenser()
+        private val dispenser: Dispenser = Dispenser()
 ) {
     private val catalog = Catalog()
 
@@ -14,7 +14,7 @@ class VendingMachine(
     }
 
     fun display(): String = display.show(balance)
-    fun dispenser(): List<String> = dispenser2.items
+    fun dispenser(): List<String> = dispenser.items
     fun coinReject(): List<Coin> = coinReject
 
     fun pressButton1(): VendingMachine = sell(catalog.getProduct(1))
@@ -23,7 +23,7 @@ class VendingMachine(
 
     private fun sell(product: Product): VendingMachine =
             if (sufficientFundsFor(product))
-                vendingMachine(balance = 0.00, display = SaleSuccessful(), dispenser2 = dispenser2.dispense(product.name))
+                vendingMachine(balance = 0.00, display = SaleSuccessful(), dispenser = dispenser.dispense(product.name))
             else
                 vendingMachine(display = SaleFailed(product))
 
@@ -42,8 +42,8 @@ class VendingMachine(
             balance: Double = this.balance,
             display: Display = this.display,
             coinReject: List<Coin> = this.coinReject,
-            dispenser2: Dispenser = this.dispenser2
-    ): VendingMachine = VendingMachine(balance, display, coinReject, dispenser2)
+            dispenser: Dispenser = this.dispenser
+    ): VendingMachine = VendingMachine(balance, display, coinReject, dispenser)
 }
 
 class Dispenser(val items : List<String> = emptyList()) {
