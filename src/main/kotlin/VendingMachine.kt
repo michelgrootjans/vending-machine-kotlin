@@ -24,10 +24,10 @@ class VendingMachine(
     fun coinReject(): List<Coin> = coinReject
 
     private fun sell(product: Product): VendingMachine =
-    if (sufficientFundsFor(product))
-        vendingMachine(balance = 0.00, dispenser = dispenser + product.name, display = SaleSuccessful())
-    else
-        vendingMachine(display = SaleFailed(product))
+            if (sufficientFundsFor(product))
+                vendingMachine(balance = 0.00, dispenser = dispenser + product.name, display = SaleSuccessful())
+            else
+                vendingMachine(display = SaleFailed(product))
 
     private fun sufficientFundsFor(product: Product) = balance >= product.price
 
