@@ -25,7 +25,7 @@ class VendingMachine(
             if (balance.isSufficientFor(product.price))
                 vendingMachine(balance = Balance(), display = display.saleSuccessful(), dispenser = dispenser.dispense(product.name))
             else
-                vendingMachine(display = SaleFailed(product))
+                vendingMachine(display = display.saleFailed(product))
 
     private fun isValid(coin: Coin): Boolean = listOf(nickel(), dime(), quarter()).contains(coin)
 

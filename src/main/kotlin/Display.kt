@@ -6,6 +6,10 @@ open class Display {
     open fun saleSuccessful(): Display {
         return SaleSuccessful()
     }
+
+    fun saleFailed(product: Product): Display {
+        return SaleFailed(product)
+    }
 }
 
 class DefaultDisplay : Display() {
