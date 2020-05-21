@@ -53,7 +53,7 @@ class CalculateChange : StringSpec({
         table(
                 headers("coins", "price", "change"),
                 row(listOf(quarter()), 0.00, listOf(quarter())),
-                row(listOf(quarter()), 0.00, listOf(quarter()))
+                row(listOf(dime()), 0.00, listOf(dime()))
         ).forAll{coins, price, change -> Balance().add(coins).changeFor(price).shouldContainAll(change)}
     }
 })
