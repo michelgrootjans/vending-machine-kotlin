@@ -7,7 +7,7 @@ class VendingMachine(
 ) {
     private val catalog = Catalog()
 
-    fun tick() : VendingMachine = VendingMachine(balance, dispenser = dispenser, coinReject = coinReject)
+    fun tick() : VendingMachine = vendingMachine(display = DefaultDisplay())
 
     fun insert(coin: Coin): VendingMachine =
         if (isValid(coin)) vendingMachine(balance = balance + valueOf(coin))
