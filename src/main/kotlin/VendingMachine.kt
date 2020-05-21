@@ -38,7 +38,7 @@ class VendingMachine(
     }
 
     private fun vendingMachine(
-            balance: Double = this.balance,
+            balance: Double = 0.00,
             display: Display = this.display,
             coinReject: List<Coin> = this.coinReject,
             dispenser: Dispenser = this.dispenser,
