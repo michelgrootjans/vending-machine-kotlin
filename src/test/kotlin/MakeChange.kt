@@ -54,7 +54,8 @@ class CalculateChange : StringSpec({
                 headers("coins", "price"),
                 row(listOf(quarter()), 0.25),
                 row(listOf(dime()), 0.10),
-                row(listOf(nickel()), 0.05)
+                row(listOf(nickel()), 0.05),
+                row(listOf(dime(), dime()), 0.20)
         ).forAll{coins, price -> Balance().add(coins).changeFor(price).shouldBeEmpty()}
     }
 
