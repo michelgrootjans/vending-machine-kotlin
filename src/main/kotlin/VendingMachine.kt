@@ -15,7 +15,7 @@ class VendingMachine(
     }
 
     fun display(): String = display.show(balance)
-    fun dispenser(): List<String> = dispenser2.items 
+    fun dispenser(): List<String> = dispenser2.items
     fun coinReject(): List<Coin> = coinReject
 
     fun pressButton1(): VendingMachine = sell(catalog.getProduct(1))
