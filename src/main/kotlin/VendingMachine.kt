@@ -41,8 +41,9 @@ class VendingMachine(
             balance: Balance = this.balance,
             display: Display = this.display,
             dispenser: Dispenser = this.dispenser,
-            coinReject: List<Coin> = this.coinReject
-    ): VendingMachine = VendingMachine(balance, display, dispenser, coinReject)
+            coinReject: List<Coin> = this.coinReject,
+            coinReject2: CoinReject = this.coinReject2
+    ): VendingMachine = VendingMachine(balance, display, dispenser, coinReject, coinReject2)
 }
 
 class CoinReject {
