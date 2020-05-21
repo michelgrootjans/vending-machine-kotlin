@@ -1,13 +1,13 @@
 class Balance(private val coins: List<Coin> = emptyList()) {
-    fun show(): String = "%.2f".format(total())
-    fun isSufficientFor(amount: Double): Boolean = amount <= total()
+    fun show(): String = "%.2f".format(balance())
+    fun isSufficientFor(amount: Double): Boolean = balance() >= amount
     fun add(coin: Coin): Balance = Balance(coins + coin)
-    fun isEmpty(): Boolean = total() == 0.00
+    fun isEmpty(): Boolean = balance() == 0.00
 
-    fun total(): Double = coins.sumByDouble { coin -> valueOf(coin) }
+    fun balance(): Double = coins.sumByDouble { coin -> valueOf(coin) }
 
-    fun changeFor(price: Double): List<Coin> {
-        if (price < total()) return listOf(quarter())
+    fun changeFor(amount: Double): List<Coin> {
+        if (amount < balance()) return listOf(quarter())
         return emptyList()
     }
 
