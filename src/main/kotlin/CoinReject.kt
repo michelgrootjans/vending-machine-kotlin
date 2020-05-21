@@ -3,7 +3,7 @@ class CoinReject(val coins: List<Coin> = emptyList()) {
         return CoinReject(coins + coin)
     }
 
-    fun difficultstuffWith(balance: Balance, product: Product): CoinReject {
-        return CoinReject(coins + balance.changeFor(product.price))
+    fun difficultstuffWith(change: List<Coin>): CoinReject {
+        return CoinReject(coins + change)
     }
 }

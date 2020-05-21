@@ -27,7 +27,7 @@ class VendingMachine(
                         balance = Balance(),
                         display = display.saleSuccessful(),
                         dispenser = dispenser.dispense(product.name),
-                        coinReject = coinReject.difficultstuffWith(balance, product)
+                        coinReject = coinReject.difficultstuffWith(balance.changeFor(product.price))
                 )
             else
                 vendingMachine(display = display.saleFailed(product))
