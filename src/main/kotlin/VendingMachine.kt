@@ -9,9 +9,10 @@ class VendingMachine(
 
     fun tick(): VendingMachine = vendingMachine(display = DefaultDisplay())
 
-    fun insert(coin: Coin): VendingMachine =
-            if (isValid(coin)) vendingMachine(balance = balance + valueOf(coin))
-            else vendingMachine(coinReject = coinReject + coin)
+    fun insert(coin: Coin): VendingMachine = when {
+        isValid(coin) -> vendingMachine(balance = balance + valueOf(coin))
+        else -> vendingMachine(coinReject = coinReject + coin)
+    }
 
     fun pressButton1(): VendingMachine = sell(catalog.getProduct(1))
     fun pressButton2(): VendingMachine = sell(catalog.getProduct(2))
