@@ -1,16 +1,16 @@
 class VendingMachine(
         private val balance: Double = 0.00,
+        private val display: Display = DefaultDisplay(),
         private val dispenser: List<String> = emptyList(),
-        private val coinReject: List<Coin> = emptyList(),
-        private val display: Display = DefaultDisplay()
+        private val coinReject: List<Coin> = emptyList()
 ) {
     private val catalog = Catalog()
 
-    fun tick() : VendingMachine = VendingMachine(balance, dispenser, coinReject)
+    fun tick() : VendingMachine = VendingMachine(balance, dispenser = dispenser, coinReject = coinReject)
 
     fun insert(coin: Coin): VendingMachine =
-        if (isValid(coin)) VendingMachine(balance + valueOf(coin), dispenser, coinReject)
-        else VendingMachine(balance, dispenser, coinReject + coin)
+        if (isValid(coin)) VendingMachine(balance + valueOf(coin), dispenser = dispenser, coinReject = coinReject)
+        else VendingMachine(balance, dispenser = dispenser, coinReject = coinReject + coin)
 
     fun pressButton1(): VendingMachine = sell(catalog.getProduct(1))
     fun pressButton2(): VendingMachine = sell(catalog.getProduct(2))
@@ -28,13 +28,6 @@ class VendingMachine(
             return vendingMachine(display = SaleFailed(product))
     }
 
-    private fun vendingMachine(
-            balance: Double = this.balance,
-            display: Display = this.display,
-            dispenser: List<String> = this.dispenser,
-            coinReject: List<Coin> = this.coinReject
-    ): VendingMachine = VendingMachine(balance, dispenser, coinReject, display)
-
     private fun isValid(coin: Coin): Boolean = listOf(nickel(), dime(), quarter()).contains(coin)
 
     private fun valueOf(coin: Coin) = when (coin) {
@@ -43,4 +36,11 @@ class VendingMachine(
         quarter() -> 0.25
         else -> 0.00
     }
+
+    private fun vendingMachine(
+            balance: Double = this.balance,
+            display: Display = this.display,
+            dispenser: List<String> = this.dispenser,
+            coinReject: List<Coin> = this.coinReject
+    ): VendingMachine = VendingMachine(balance, display, dispenser, coinReject)
 }
