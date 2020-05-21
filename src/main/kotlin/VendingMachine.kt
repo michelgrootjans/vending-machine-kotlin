@@ -20,7 +20,7 @@ class VendingMachine(
     fun tick() = VendingMachine(balance, dispenser, coinReject)
 
     fun insert(coin: Coin): VendingMachine =
-        if (isValid(coin)) VendingMachine(balance + valueOf(coin), coinReject = coinReject)
+        if (isValid(coin)) VendingMachine(balance + valueOf(coin), dispenser, coinReject = coinReject)
         else VendingMachine(balance, coinReject = coinReject + coin)
 
 
