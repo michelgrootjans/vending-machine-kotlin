@@ -5,7 +5,7 @@ class VendingMachine(
         val display: Display = DefaultDisplay()
 ) {
 
-    private val inventory = mapOf(
+    private val catalog = mapOf(
             1 to Product("cola", 1.00),
             2 to Product("chips", 0.50),
             3 to Product("candy", 0.65)
@@ -18,9 +18,9 @@ class VendingMachine(
         else VendingMachine(balance, dispenser, coinReject + coin)
 
 
-    fun pressButton1(): VendingMachine = sell(inventory.getValue(1))
-    fun pressButton2(): VendingMachine = sell(inventory.getValue(2))
-    fun pressButton3(): VendingMachine = sell(inventory.getValue(3))
+    fun pressButton1(): VendingMachine = sell(catalog.getValue(1))
+    fun pressButton2(): VendingMachine = sell(catalog.getValue(2))
+    fun pressButton3(): VendingMachine = sell(catalog.getValue(3))
 
     fun display(): String = display.show(balance)
 
