@@ -14,7 +14,7 @@ class VendingMachine(
 
     fun insert(coin: Coin): VendingMachine = when {
         isValid(coin) -> vendingMachine(balance = balance.add(valueOf(coin)))
-        else -> vendingMachine(coinReject2 = coinReject.add(coin))
+        else -> vendingMachine(coinReject = coinReject.add(coin))
     }
 
     fun pressButton1(): VendingMachine = sell(catalog.getProduct(1))
@@ -40,9 +40,8 @@ class VendingMachine(
             balance: Balance = this.balance,
             display: Display = this.display,
             dispenser: Dispenser = this.dispenser,
-            coinReject: List<Coin> = emptyList(),
-            coinReject2: CoinReject = this.coinReject
-    ): VendingMachine = VendingMachine(balance, display, dispenser, coinReject2)
+            coinReject: CoinReject = this.coinReject
+    ): VendingMachine = VendingMachine(balance, display, dispenser, coinReject)
 }
 
 class CoinReject(val coins: List<Coin> = emptyList()) {
