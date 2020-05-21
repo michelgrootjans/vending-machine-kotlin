@@ -4,9 +4,9 @@ class CoinReject(val coins: List<Coin> = emptyList()) {
     }
 
     fun difficultstuffWith(balance: Balance, product: Product): CoinReject {
-        val rest = balance.changeFor(product.price)
+        val change = balance.changeFor(product.price)
         if(balance.amount() > product.price) {
-            return add(rest[0])
+            return add(change[0])
         }
         return CoinReject(this.coins)
     }
