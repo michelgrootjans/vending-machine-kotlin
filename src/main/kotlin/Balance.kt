@@ -6,8 +6,8 @@ class Balance(private val coins: List<Coin> = emptyList()) {
 
     fun amount(): Double = coins.sumByDouble { coin -> valueOf(coin) }
 
-    fun remainingCoinsAfter(price: Double): Coin {
-        return quarter()
+    fun remainingCoinsAfter(price: Double): List<Coin> {
+        return listOf(quarter())
     }
 
     private fun valueOf(coin: Coin) = when (coin) {

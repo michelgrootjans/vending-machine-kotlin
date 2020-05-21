@@ -4,7 +4,7 @@ class CoinReject(val coins: List<Coin> = emptyList()) {
     }
 
     fun difficultstuffWith(balance: Balance, product: Product): CoinReject {
-        val cons = listOf(balance.remainingCoinsAfter(product.price))
+        val cons = balance.remainingCoinsAfter(product.price)
         if(balance.amount() > product.price) {
             val coin = cons[0]
             return add(coin)
