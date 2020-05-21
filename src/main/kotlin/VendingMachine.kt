@@ -9,7 +9,7 @@ class VendingMachine(
 
     fun tick(): VendingMachine = vendingMachine(display = DefaultDisplay())
 
-    fun display(): String = display.show(balance, balance2)
+    fun display(): String = display.show(balance2)
     fun dispenser(): List<String> = dispenser.items
     fun coinReject(): List<Coin> = coinReject
 
