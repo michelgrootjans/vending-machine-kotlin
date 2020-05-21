@@ -60,6 +60,15 @@ class CalculateChange : StringSpec({
         table(
                 headers("coins", "price", "change"),
                 row(listOf(quarter()), 0.00, listOf(quarter()))
-        ).forAll{coins, price, change -> Balance().add(coins).changeFor(price).shouldContainAll(change)}
+        ).forAll(fun(coins: List<Coin>, price: Double, change: List<Coin>) {
+            val machine = coins.fold(VendingMachine(), { machine, coin -> machine.insert(coin) })
+                    .insert(quarter())
+                    .insert(quarter())
+                    .insert(quarter())
+                    .insert(quarter())
+                    .pressButton1()
+
+            machine.coinReturn().shouldContainAll(change)
+        })
     }
 })
