@@ -50,6 +50,8 @@ class VendingMachine(
 
 class Dispenser(val items : List<String> = emptyList()) {
     fun dispense(item: String): Dispenser {
+        println(items)
+        println(item)
         return Dispenser(items + item)
     }
 
