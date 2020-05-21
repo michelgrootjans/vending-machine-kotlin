@@ -7,7 +7,7 @@ class VendingMachine(
 
     private val catalog = Catalog()
 
-    fun tick() = VendingMachine(balance, dispenser, coinReject)
+    fun tick() : VendingMachine = VendingMachine(balance, dispenser, coinReject)
 
     fun insert(coin: Coin): VendingMachine =
         if (isValid(coin)) VendingMachine(balance + valueOf(coin), dispenser, coinReject)
@@ -32,8 +32,12 @@ class VendingMachine(
                         SaleSuccessful()
                 )
         }
+        return bleh(product = product)
+    }
+
+    private fun bleh(product: Product, d: Double = balance): VendingMachine {
         return VendingMachine(
-                0.00,
+                d,
                 dispenser,
                 coinReject,
                 SaleFailed(product)
@@ -49,17 +53,3 @@ class VendingMachine(
         else -> 0.00
     }
 }
-
-class Catalog() {
-    fun getValue(i: Int): Product {
-        return catalog[i]!!
-    }
-
-    private val catalog = mapOf(
-            1 to Product("cola", 1.00),
-            2 to Product("chips", 0.50),
-            3 to Product("candy", 0.65)
-    )
-}
-
-
