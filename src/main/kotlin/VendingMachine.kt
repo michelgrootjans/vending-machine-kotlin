@@ -4,27 +4,27 @@ class VendingMachine(
         val balance: Double = 0.00,
         val dispenser: List<String> = emptyList(),
         val coinReject: List<Coin> = emptyList(),
-        val state: State = AtRest()
+        val display: State = AtRest()
 ) {
     data class Product(val name: String, val price: Double)
     open class State {
-        open fun display(balance: Double): String {
+        open fun show(balance: Double): String {
             return "%.2f".format(balance)
         }
     }
     class AtRest : State() {
-        override fun display(balance: Double): String = when (balance) {
+        override fun show(balance: Double): String = when (balance) {
             0.00 -> "INSERT COIN"
             else -> "%.2f".format(balance)
         }
     }
     class SaleSuccessful : State() {
-        override fun display(balance: Double): String {
+        override fun show(balance: Double): String {
             return "THANK YOU"
         }
     }
     class SaleFailed(val product: Product) : State() {
-        override fun display(balance: Double): String {
+        override fun show(balance: Double): String {
             return "PRICE %.2f".format(product.price)
 
         }
@@ -43,16 +43,16 @@ class VendingMachine(
         else VendingMachine(balance, dispenser, coinReject + coin)
 
 
-    fun pressButton1(): VendingMachine = dispense(inventory.getValue(1))
-    fun pressButton2(): VendingMachine = dispense(inventory.getValue(2))
-    fun pressButton3(): VendingMachine = dispense(inventory.getValue(3))
+    fun pressButton1(): VendingMachine = sell(inventory.getValue(1))
+    fun pressButton2(): VendingMachine = sell(inventory.getValue(2))
+    fun pressButton3(): VendingMachine = sell(inventory.getValue(3))
 
-    fun display(): String = state.display(balance)
+    fun display(): String = display.show(balance)
 
     fun dispenser(): List<String> = dispenser
     fun coinReject(): List<Coin> = coinReject
 
-    private fun dispense(product: Product): VendingMachine {
+    private fun sell(product: Product): VendingMachine {
         if (balance >= product.price) {
                 return VendingMachine(
                         0.00,
