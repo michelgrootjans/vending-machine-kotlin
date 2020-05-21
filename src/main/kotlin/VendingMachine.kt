@@ -13,7 +13,7 @@ class VendingMachine(
     fun coinReject(): List<Coin> = coinReject.coins
 
     fun insert(coin: Coin): VendingMachine = when {
-        isValid(coin) -> vendingMachine(balance = balance.add(valueOf(coin), coin))
+        isValid(coin) -> vendingMachine(balance = balance.add(coin))
         else -> vendingMachine(coinReject = coinReject.add(coin))
     }
 
@@ -28,13 +28,6 @@ class VendingMachine(
                 vendingMachine(display = display.saleFailed(product))
 
     private fun isValid(coin: Coin): Boolean = listOf(nickel(), dime(), quarter()).contains(coin)
-
-    private fun valueOf(coin: Coin) = when (coin) {
-        nickel() -> 0.05
-        dime() -> 0.10
-        quarter() -> 0.25
-        else -> 0.00
-    }
 
     private fun vendingMachine(
             balance: Balance = this.balance,
