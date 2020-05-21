@@ -1,31 +1,28 @@
-open class Display {
-    open fun show(balance: Balance): String {
-        return balance.show()
-    }
+open class AbstractDisplay {
+    open fun show(balance: Balance): String =
+            if (balance.isEmpty()) "INSERT COIN"
+            else balance.show()
 
-    open fun saleSuccessful(): Display {
+    open fun saleSuccessful(): AbstractDisplay {
         return SaleSuccessful()
     }
 
-    fun saleFailed(product: Product): Display {
+    fun saleFailed(product: Product): AbstractDisplay {
         return SaleFailed(product)
     }
 
-    fun default(): Display {
+    fun default(): AbstractDisplay {
         return DefaultDisplay()
     }
 }
 
-class DefaultDisplay : Display() {
-    override fun show(balance: Balance): String =
-            if (balance.isEmpty()) "INSERT COIN"
-            else balance.show()
+class DefaultDisplay : AbstractDisplay() {
 }
 
-private class SaleSuccessful : Display() {
+private class SaleSuccessful : AbstractDisplay() {
     override fun show(balance: Balance): String = "THANK YOU"
 }
 
-private class SaleFailed(private val product: Product) : Display() {
+private class SaleFailed(private val product: Product) : AbstractDisplay() {
     override fun show(balance: Balance): String = "PRICE %.2f".format(product.price)
 }
