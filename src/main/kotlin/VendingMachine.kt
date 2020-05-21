@@ -23,12 +23,13 @@ class VendingMachine(
 
     private fun sell(product: Product): VendingMachine {
         if (balance >= product.price) {
-                return VendingMachine(
-                        0.00,
-                        dispenser + product.name,
-                        coinReject,
-                        SaleSuccessful()
-                )
+//                return VendingMachine(
+//                        0.00,
+//                        dispenser + product.name,
+//                        coinReject,
+//                        SaleSuccessful()
+//                )
+            return vendingMachine(balance = 0.00, dispenser = dispenser + product.name, display = SaleSuccessful())
         }
         return vendingMachine(display = SaleFailed(product))
     }
