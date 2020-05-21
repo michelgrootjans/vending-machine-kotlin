@@ -2,7 +2,7 @@ class VendingMachine(
         private val balance: Balance = Balance(),
         private val display: Display = Display(),
         private val dispenser: Dispenser = Dispenser(),
-        private val coinReject: CoinReturn = CoinReturn()
+        private val coinReturn: CoinReturn = CoinReturn()
 ) {
     private val catalog = Catalog()
 
@@ -10,11 +10,11 @@ class VendingMachine(
 
     fun display(): String = display.show(balance)
     fun dispenser(): List<String> = dispenser.items
-    fun coinReturn(): List<Coin> = coinReject.coins
+    fun coinReturn(): List<Coin> = coinReturn.coins
 
     fun insert(coin: Coin): VendingMachine = when {
         isValid(coin) -> vendingMachine(balance = balance.add(coin))
-        else -> vendingMachine(coinReturn = coinReject.add(coin))
+        else -> vendingMachine(coinReturn = coinReturn.add(coin))
     }
 
     fun pressButton1(): VendingMachine = sell(catalog.getProduct(1))
@@ -27,7 +27,7 @@ class VendingMachine(
                         balance = Balance(),
                         display = display.saleSuccessful(),
                         dispenser = dispenser.dispense(product.name),
-                        coinReturn = coinReject.add(balance.changeFor(product.price))
+                        coinReturn = coinReturn.add(balance.changeFor(product.price))
                 )
             else
                 vendingMachine(display = display.saleFailed(product))
@@ -38,6 +38,6 @@ class VendingMachine(
             balance: Balance = this.balance,
             display: Display = this.display,
             dispenser: Dispenser = this.dispenser,
-            coinReturn: CoinReturn = this.coinReject
+            coinReturn: CoinReturn = this.coinReturn
     ): VendingMachine = VendingMachine(balance, display, dispenser, coinReturn)
 }
