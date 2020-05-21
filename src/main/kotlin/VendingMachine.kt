@@ -23,7 +23,7 @@ class VendingMachine(
     fun pressButton3(): VendingMachine = sell(catalog.getProduct(3))
 
     private fun sell(product: Product): VendingMachine =
-            if (sufficientFundsFor(product))
+            if (balance2.isSufficientFor(product.price))
                 vendingMachine(balance = 0.00, balance2 = balance2.subtract(product.price), display = SaleSuccessful(), dispenser = dispenser.dispense(product.name))
             else
                 vendingMachine(display = SaleFailed(product))
@@ -51,6 +51,9 @@ class VendingMachine(
 class Balance(val balance: Double = 0.00) {
     fun add(amaount: Double): Balance = Balance(balance + amaount)
     fun subtract(amount: Double): Balance = Balance(balance - amount)
+    fun isSufficientFor(amount: Double): Boolean {
+        return amount <= balance
+    }
 
 }
 
