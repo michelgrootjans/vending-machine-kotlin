@@ -12,7 +12,7 @@ open class AbstractDisplay {
     }
 
     fun default(): AbstractDisplay {
-        return DefaultDisplay()
+        return AbstractDisplay()
     }
 }
 
