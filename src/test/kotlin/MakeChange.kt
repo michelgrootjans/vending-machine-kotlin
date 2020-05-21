@@ -47,7 +47,7 @@ class CalculateChange : StringSpec({
                 row(listOf(nickel()), 0.05),
                 row(listOf(dime(), dime()), 0.20),
                 row(listOf(quarter(), dime(), nickel()), 0.40)
-        ).forAll{coins, price -> Balance().add(coins).changeFor(price).shouldBeEmpty()}
+        ).forAll { coins, price -> Balance().add(coins).changeFor(price).shouldBeEmpty() }
     }
 
     "change expected" {
@@ -60,7 +60,10 @@ class CalculateChange : StringSpec({
                 row(listOf(dime()), 0.00, listOf(dime())),
                 row(listOf(dime()), 0.05, listOf(nickel())),
 
-                row(listOf(nickel()), 0.00, listOf(nickel()))
-        ).forAll{coins, price, change -> Balance().add(coins).changeFor(price).shouldContainAll(change)}
+                row(listOf(nickel()), 0.00, listOf(nickel())),
+
+                row(listOf(quarter(), dime()), 0.00, listOf(quarter(), dime()))
+
+        ).forAll { coins, price, change -> Balance().add(coins).changeFor(price).shouldContainAll(change) }
     }
 })
