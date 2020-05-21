@@ -65,9 +65,14 @@ class CalculateChange : StringSpec({
                 row(listOf(quarter(), quarter()), 0.00, listOf(quarter(), quarter())),
                 row(listOf(quarter(), dime()), 0.00, listOf(quarter(), dime())),
                 row(listOf(quarter(), nickel()), 0.00, listOf(quarter(), nickel())),
-                
-                row(listOf(quarter(), quarter()), 0.15, listOf(quarter(), dime()))
 
-        ).forAll { coins, price, change -> Balance().add(coins).changeFor(price).shouldContainAll(change) }
+                row(listOf(quarter(), quarter()), 0.15, listOf(quarter(), dime())),
+                row(listOf(quarter(), quarter()), 0.30, listOf(dime(), dime()))
+
+        ).forAll(fun(coins: List<Coin>, price: Double, change: List<Coin>) {
+            val changeFor = Balance().add(coins).changeFor(price)
+            if(!change.equals(changeFor)) println("""$coins - $price = $changeFor (expected $change)""")
+            changeFor.shouldContainAll(change)
+        })
     }
 })
