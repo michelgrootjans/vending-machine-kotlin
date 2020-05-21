@@ -56,7 +56,6 @@ class VendingMachine(
     private fun dispense(product: Product): VendingMachine {
         // warning: ugly code ahead
         if (balance >= product.price) {
-            if(balance > 0.00)
                 return VendingMachine(
                         0.00,
                         dispenser + product.name,
@@ -64,13 +63,6 @@ class VendingMachine(
                         "THANK YOU",
                         SaleSuccessful()
                 )
-            return VendingMachine(
-                    balance,
-                    dispenser,
-                    coinReject,
-                    "PRICE 1.00",
-                    SaleFailed(product)
-            )
         }
         return VendingMachine(
                 0.00,
