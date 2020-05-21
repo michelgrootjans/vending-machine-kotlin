@@ -7,9 +7,8 @@ import io.kotlintest.specs.StringSpec
 //I want customers to receive correct change
 //So that they will use the vending machine again
 //
-//When a product is selected that costs less than the amount of
-//money in the machine, then the remaining amount is placed in the coin return.
-
+//When a product is selected that costs less than the amount of money in the machine,
+// then the remaining amount is placed in the coin return.
 class MakeChange : StringSpec({
     "No change for normal sale"{
         val machine = VendingMachine()
@@ -19,7 +18,7 @@ class MakeChange : StringSpec({
                 .insert(quarter())
                 .pressButton1()
 
-        machine.coinReject().shouldBeEmpty()
+        machine.coinReturn().shouldBeEmpty()
     }
     "one quarter returned"{
         val machine = VendingMachine()
@@ -30,6 +29,6 @@ class MakeChange : StringSpec({
                 .insert(quarter())
                 .pressButton1()
 
-        machine.coinReject().shouldContain(quarter())
+        machine.coinReturn().shouldContain(quarter())
     }
 })

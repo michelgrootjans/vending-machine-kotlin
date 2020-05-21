@@ -25,33 +25,33 @@ class AcceptCoins : StringSpec({
         val machine = VendingMachine()
 
         machine.display() shouldBe "INSERT COIN"
-        machine.coinReject().shouldBeEmpty()
+        machine.coinReturn().shouldBeEmpty()
     }
     "Insert Cent" {
         val machine = VendingMachine()
                 .insert(cent())
 
         machine.display() shouldBe "INSERT COIN"
-        machine.coinReject().shouldContainAll(cent())
+        machine.coinReturn().shouldContainAll(cent())
     }
     "Insert Nickel" {
         val machine = VendingMachine()
                 .insert(nickel())
 
         machine.display() shouldBe "0.05"
-        machine.coinReject().shouldBeEmpty()
+        machine.coinReturn().shouldBeEmpty()
     }
     "Insert Dime" {
         val machine = VendingMachine()
                 .insert(dime())
         machine.display() shouldBe "0.10"
-        machine.coinReject().shouldBeEmpty()
+        machine.coinReturn().shouldBeEmpty()
     }
     "Insert Quarter" {
         val machine = VendingMachine()
                 .insert(quarter())
         machine.display() shouldBe "0.25"
-        machine.coinReject().shouldBeEmpty()
+        machine.coinReturn().shouldBeEmpty()
     }
     "Insert Fake Dime with different weight" {
         val fakeDime = Coin("2.260 g", "17.91 mm")
@@ -59,7 +59,7 @@ class AcceptCoins : StringSpec({
                 .insert(fakeDime)
 
         machine.display() shouldBe "INSERT COIN"
-        machine.coinReject().shouldContainAll(fakeDime)
+        machine.coinReturn().shouldContainAll(fakeDime)
     }
     "Insert Fake Dime with different dimension" {
         val fakeDime = Coin("2.268 g", "17.9 mm")
@@ -67,7 +67,7 @@ class AcceptCoins : StringSpec({
                 .insert(fakeDime)
 
         machine.display() shouldBe "INSERT COIN"
-        machine.coinReject().shouldContainAll(fakeDime)
+        machine.coinReturn().shouldContainAll(fakeDime)
     }
     "Insert Nickel twice" {
         val machine = VendingMachine()
@@ -75,7 +75,7 @@ class AcceptCoins : StringSpec({
                 .insert(nickel())
 
         machine.display() shouldBe "0.10"
-        machine.coinReject().shouldBeEmpty()
+        machine.coinReturn().shouldBeEmpty()
     }
     "Insert Dime twice" {
         val machine = VendingMachine()
@@ -83,7 +83,7 @@ class AcceptCoins : StringSpec({
                 .insert(dime())
 
         machine.display() shouldBe "0.20"
-        machine.coinReject().shouldBeEmpty()
+        machine.coinReturn().shouldBeEmpty()
     }
     "Insert Nickel and Fake Dime" {
         val fakeDime = Coin("2.268 g", "17.9 mm")
@@ -92,7 +92,7 @@ class AcceptCoins : StringSpec({
                 .insert(nickel())
 
         machine.display() shouldBe "0.05"
-        machine.coinReject().shouldContainAll(fakeDime)
+        machine.coinReturn().shouldContainAll(fakeDime)
     }
 })
 
