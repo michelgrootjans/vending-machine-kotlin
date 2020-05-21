@@ -1,8 +1,8 @@
 class VendingMachine(
-        val balance: Double = 0.00,
-        val dispenser: List<String> = emptyList(),
-        val coinReject: List<Coin> = emptyList(),
-        val display: Display = DefaultDisplay()
+        private val balance: Double = 0.00,
+        private val dispenser: List<String> = emptyList(),
+        private val coinReject: List<Coin> = emptyList(),
+        private val display: Display = DefaultDisplay()
 ) {
 
     private val catalog = Catalog()
@@ -52,10 +52,10 @@ class VendingMachine(
 
 class Catalog() {
     fun getValue(i: Int): Product {
-        return catalog.get(i)!!;
+        return catalog[i]!!
     }
 
-    val catalog = mapOf(
+    private val catalog = mapOf(
             1 to Product("cola", 1.00),
             2 to Product("chips", 0.50),
             3 to Product("candy", 0.65)
