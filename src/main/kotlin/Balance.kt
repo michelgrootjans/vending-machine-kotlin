@@ -16,7 +16,8 @@ class Balance(private val coins: List<Coin> = emptyList()) {
     private fun calculateChange(amount: Double): List<Coin> {
         if(amount == 0.05) return listOf(nickel())
         if(amount == 0.10) return listOf(dime())
-        return listOf(quarter())
+        if(amount == 0.25) return listOf(quarter())
+        return emptyList()
     }
 
     private fun valueOf(coin: Coin) = when (coin) {
