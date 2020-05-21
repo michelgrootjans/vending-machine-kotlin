@@ -15,7 +15,7 @@ class VendingMachine(
     }
 
     fun display(): String = display.show(balance)
-    fun dispenser(): List<String> = dispenser
+    fun dispenser(): List<String> = dispenser2.items 
     fun coinReject(): List<Coin> = coinReject
 
     fun pressButton1(): VendingMachine = sell(catalog.getProduct(1))
@@ -45,14 +45,10 @@ class VendingMachine(
             dispenser: List<String> = this.dispenser,
             coinReject: List<Coin> = this.coinReject,
             dispenser2: Dispenser = this.dispenser2
-    ): VendingMachine = VendingMachine(balance, display, dispenser, coinReject)
+    ): VendingMachine = VendingMachine(balance, display, dispenser, coinReject, dispenser2)
 }
 
 class Dispenser(val items : List<String> = emptyList()) {
-    fun dispense(item: String): Dispenser {
-        println(items)
-        println(item)
-        return Dispenser(items + item)
-    }
+    fun dispense(item: String): Dispenser = Dispenser(items + item)
 
 }

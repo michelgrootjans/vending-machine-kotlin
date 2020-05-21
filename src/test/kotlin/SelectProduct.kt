@@ -41,6 +41,7 @@ class SelectProduct : StringSpec({
         machine.dispenser().shouldBeEmpty()
     }
     "Buy a cola" {
+        println("BUY A COLA")
         val machine = VendingMachine()
                 .insert(quarter())
                 .insert(quarter())
