@@ -14,14 +14,13 @@ class VendingMachine(
         else -> vendingMachine(coinReject = coinReject + coin)
     }
 
+    fun display(): String = display.show(balance)
+    fun dispenser(): List<String> = dispenser
+    fun coinReject(): List<Coin> = coinReject
+
     fun pressButton1(): VendingMachine = sell(catalog.getProduct(1))
     fun pressButton2(): VendingMachine = sell(catalog.getProduct(2))
     fun pressButton3(): VendingMachine = sell(catalog.getProduct(3))
-
-    fun display(): String = display.show(balance)
-
-    fun dispenser(): List<String> = dispenser
-    fun coinReject(): List<Coin> = coinReject
 
     private fun sell(product: Product): VendingMachine =
             if (sufficientFundsFor(product))

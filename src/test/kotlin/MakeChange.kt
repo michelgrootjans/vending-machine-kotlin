@@ -1,3 +1,6 @@
+import io.kotlintest.matchers.collections.shouldBeEmpty
+import io.kotlintest.matchers.collections.shouldContainAll
+import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 
 //MAKE CHANGE
@@ -10,6 +13,13 @@ import io.kotlintest.specs.StringSpec
 
 class MakeChange : StringSpec({
     "No change for normal sale"{
-        val machine=VendingMachine()
+        val machine = VendingMachine()
+                .insert(quarter())
+                .insert(quarter())
+                .insert(quarter())
+                .insert(quarter())
+                .pressButton1()
+
+        machine.coinReject().shouldBeEmpty()
     }
 })
