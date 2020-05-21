@@ -48,9 +48,7 @@ class VendingMachine(
     fun pressButton2(): VendingMachine = dispense(inventory.getValue(2))
     fun pressButton3(): VendingMachine = dispense(inventory.getValue(3))
 
-    fun display(): String = when (balance) {
-        else -> state.display(balance)
-    }
+    fun display(): String = state.display(balance)
 
     fun dispenser(): List<String> = dispenser
     fun coinReject(): List<Coin> = coinReject
