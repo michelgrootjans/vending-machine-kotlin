@@ -22,10 +22,10 @@ class DefaultDisplay : Display() {
             else balance.show()
 }
 
-class SaleSuccessful : Display() {
+private class SaleSuccessful : Display() {
     override fun show(balance: Balance): String = "THANK YOU"
 }
 
-class SaleFailed(private val product: Product) : Display() {
+private class SaleFailed(private val product: Product) : Display() {
     override fun show(balance: Balance): String = "PRICE %.2f".format(product.price)
 }
