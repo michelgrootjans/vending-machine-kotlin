@@ -4,11 +4,11 @@ class CoinReject(val coins: List<Coin> = emptyList()) {
     }
 
     fun difficultstuffWith(balance: Balance, product: Product): CoinReject {
-        val cons = balance.remainingCoinsAfter(product.price)
+        val coins = balance.remainingCoinsAfter(product.price)
         if(balance.amount() > product.price) {
-            val coin = cons[0]
+            val coin = coins[0]
             return add(coin)
         }
-        return CoinReject(coins)
+        return CoinReject(this.coins)
     }
 }
