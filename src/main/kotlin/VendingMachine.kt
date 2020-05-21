@@ -46,7 +46,7 @@ class VendingMachine(
     ): VendingMachine = VendingMachine(balance, display, dispenser, coinReject, coinReject2)
 }
 
-class CoinReject {
+class CoinReject(val coins: List<Coin> = emptyList()) {
     fun add(coin: Coin): CoinReject {
         return CoinReject()
     }
