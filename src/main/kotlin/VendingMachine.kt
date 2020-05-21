@@ -45,14 +45,3 @@ class VendingMachine(
             balance2: Balance = this.balance2
     ): VendingMachine = VendingMachine(balance, display, dispenser, coinReject, balance2)
 }
-
-class Balance(private val balance: Double = 0.00) {
-    fun isSufficientFor(amount: Double): Boolean = amount <= balance
-    fun add(amount: Double): Balance = Balance(balance + amount)
-    fun subtract(amount: Double): Balance = Balance(balance - amount)
-    fun show(): String {
-        return "%.2f".format(balance)
-    }
-
-}
-

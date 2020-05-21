@@ -6,7 +6,7 @@ open class Display {
 class DefaultDisplay : Display() {
     override fun show(balance: Double, balance2: Balance): String = when (balance) {
         0.00 -> "INSERT COIN"
-        else -> "%.2f".format(balance)
+        else -> balance2.show()
     }
 }
 class SaleSuccessful : Display() {
