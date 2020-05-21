@@ -14,8 +14,9 @@ class VendingMachine(
         }
     }
     class AtRest : State() {
-        override fun display(balance: Double): String {
-            return "%.2f".format(balance)
+        override fun display(balance: Double): String = when (balance) {
+            0.00 -> "INSERT COIN"
+            else -> "%.2f".format(balance)
         }
     }
     class SaleSuccessful : State() {
@@ -48,7 +49,7 @@ class VendingMachine(
     fun pressButton3(): VendingMachine = dispense(inventory.getValue(3))
 
     fun display(): String = when (balance) {
-        0.00 -> defaultMessage
+        0.00 -> state.display(balance)
         else -> state.display(balance)
     }
 
@@ -78,7 +79,8 @@ class VendingMachine(
                 0.00,
                 dispenser,
                 coinReject,
-                "PRICE %.2f".format(product.price)
+                "PRICE %.2f".format(product.price),
+                SaleFailed(product)
         )
     }
 
