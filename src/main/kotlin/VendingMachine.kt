@@ -10,8 +10,8 @@ class VendingMachine(
     fun tick() : VendingMachine = VendingMachine(balance, dispenser = dispenser, coinReject = coinReject)
 
     fun insert(coin: Coin): VendingMachine =
-        if (isValid(coin)) VendingMachine(balance + valueOf(coin), dispenser = dispenser, coinReject = coinReject)
-        else VendingMachine(balance, dispenser = dispenser, coinReject = coinReject + coin)
+        if (isValid(coin)) vendingMachine(balance = balance + valueOf(coin))
+        else vendingMachine(coinReject = coinReject + coin)
 
     fun pressButton1(): VendingMachine = sell(catalog.getProduct(1))
     fun pressButton2(): VendingMachine = sell(catalog.getProduct(2))
