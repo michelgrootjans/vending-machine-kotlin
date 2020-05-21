@@ -28,7 +28,7 @@ class Balance(private val coins: List<Coin> = emptyList()) {
         else -> 0.00
     }
 
-    // don't look - ugly code aheqd
+    // don't look - ugly code ahead
     fun Double._eq(other: Double) = abs(this - other) < 0.0001
     fun Double._ge(other: Double) = this > other || this._eq(other)
 }
