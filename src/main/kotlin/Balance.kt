@@ -17,5 +17,4 @@ class Balance(private val coins: List<Coin> = emptyList()) {
         quarter() -> 0.25
         else -> 0.00
     }
-
 }
