@@ -1,6 +1,11 @@
 import io.kotlintest.matchers.collections.shouldBeEmpty
 import io.kotlintest.matchers.collections.shouldContain
+import io.kotlintest.matchers.collections.shouldContainAll
 import io.kotlintest.specs.StringSpec
+import io.kotlintest.tables.forAll
+import io.kotlintest.tables.headers
+import io.kotlintest.tables.row
+import io.kotlintest.tables.table
 
 //MAKE CHANGE
 //As a vendor
@@ -42,5 +47,19 @@ class CalculateChange : StringSpec({
     }
     "quarter change for quarter"{
         Balance().add(quarter()).changeFor(0.25).shouldBeEmpty()
+    }
+
+    "no change expected" {
+        table(
+                headers("coins", "price"),
+                row(listOf(quarter()), 0.25)
+        ).forAll{coins, price -> Balance().add(coins).changeFor(price).shouldBeEmpty()}
+    }
+
+    "change expected" {
+        table(
+                headers("coins", "price", "change"),
+                row(listOf(quarter()), 0.00, listOf(quarter()))
+        ).forAll{coins, price, change -> Balance().add(coins).changeFor(price).shouldContainAll(change)}
     }
 })
