@@ -52,13 +52,15 @@ class CalculateChange : StringSpec({
     "no change expected" {
         table(
                 headers("coins", "price"),
-                row(listOf(quarter()), 0.25)
+                row(listOf(quarter()), 0.25),
+                row(listOf(dime()), 0.10)
         ).forAll{coins, price -> Balance().add(coins).changeFor(price).shouldBeEmpty()}
     }
 
     "change expected" {
         table(
                 headers("coins", "price", "change"),
+                row(listOf(quarter()), 0.00, listOf(quarter())),
                 row(listOf(quarter()), 0.00, listOf(quarter()))
         ).forAll(fun(coins: List<Coin>, price: Double, change: List<Coin>) {
             val machine = coins.fold(VendingMachine(), { machine, coin -> machine.insert(coin) })
