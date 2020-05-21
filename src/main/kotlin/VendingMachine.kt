@@ -48,7 +48,7 @@ class VendingMachine(
 
 class CoinReject(val coins: List<Coin> = emptyList()) {
     fun add(coin: Coin): CoinReject {
-        return CoinReject()
+        return CoinReject(coins + coin)
     }
 
 }
