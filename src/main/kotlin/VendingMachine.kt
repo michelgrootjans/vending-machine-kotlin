@@ -8,14 +8,14 @@ class VendingMachine(
 
     fun tick(): VendingMachine = vendingMachine(display = DefaultDisplay())
 
+    fun display(): String = display.show(balance)
+    fun dispenser(): List<String> = dispenser.items
+    fun coinReject(): List<Coin> = coinReject
+
     fun insert(coin: Coin): VendingMachine = when {
         isValid(coin) -> vendingMachine(balance = balance + valueOf(coin))
         else -> vendingMachine(coinReject = coinReject + coin)
     }
-
-    fun display(): String = display.show(balance)
-    fun dispenser(): List<String> = dispenser.items
-    fun coinReject(): List<Coin> = coinReject
 
     fun pressButton1(): VendingMachine = sell(catalog.getProduct(1))
     fun pressButton2(): VendingMachine = sell(catalog.getProduct(2))
