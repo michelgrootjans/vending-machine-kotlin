@@ -23,7 +23,7 @@ class VendingMachine(
 
     private fun sell(product: Product): VendingMachine =
             if (balance.isSufficientFor(product.price))
-                vendingMachine(balance = Balance(), display = SaleSuccessful(), dispenser = dispenser.dispense(product.name))
+                vendingMachine(balance = Balance(), display = display.saleSuccessful(), dispenser = dispenser.dispense(product.name))
             else
                 vendingMachine(display = SaleFailed(product))
 
