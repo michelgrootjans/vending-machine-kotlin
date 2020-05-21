@@ -13,4 +13,8 @@ class Balance(private val coins: List<Coin> = emptyList()) {
         else -> 0.00
     }
 
+    fun remainingCoinsAfter(price: Double): Coin {
+        return quarter()
+    }
+
 }
