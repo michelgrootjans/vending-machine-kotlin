@@ -38,7 +38,8 @@ class VendingMachine(
     private fun bleh(
             product: Product,
             balance: Double = this.balance,
-            dispenser: List<String> = this.dispenser
+            dispenser: List<String> = this.dispenser,
+            coinReject: List<Coin> = this.coinReject
     ): VendingMachine {
         return VendingMachine(
                 balance,
