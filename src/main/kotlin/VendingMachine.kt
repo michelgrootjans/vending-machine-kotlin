@@ -5,11 +5,7 @@ class VendingMachine(
         val display: Display = DefaultDisplay()
 ) {
 
-    private val catalog = mapOf(
-            1 to Product("cola", 1.00),
-            2 to Product("chips", 0.50),
-            3 to Product("candy", 0.65)
-    )
+    private val catalog = Catalog()
 
     fun tick() = VendingMachine(balance, dispenser, coinReject)
 
@@ -52,6 +48,18 @@ class VendingMachine(
         quarter() -> 0.25
         else -> 0.00
     }
+}
+
+class Catalog() {
+    fun getValue(i: Int): Product {
+        return catalog.get(i)!!;
+    }
+
+    val catalog = mapOf(
+            1 to Product("cola", 1.00),
+            2 to Product("chips", 0.50),
+            3 to Product("candy", 0.65)
+    )
 }
 
 
