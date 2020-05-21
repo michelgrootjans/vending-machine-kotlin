@@ -23,6 +23,12 @@ class VendingMachine(
             return "THANK YOU"
         }
     }
+    class SaleFailed(val product: Product) : State() {
+        override fun display(balance: Double): String {
+            return "PRICE %.2f".format(product.price)
+
+        }
+    }
 
     val inventory = mapOf(
             1 to Product("cola", 1.00),
@@ -64,7 +70,8 @@ class VendingMachine(
                     balance,
                     dispenser,
                     coinReject,
-                    "PRICE 1.00"
+                    "PRICE 1.00",
+                    SaleFailed(product)
             )
         }
         return VendingMachine(
