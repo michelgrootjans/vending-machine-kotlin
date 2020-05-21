@@ -15,17 +15,17 @@ class Balance(private val coins: List<Coin> = emptyList()) {
     }
 
     private fun calculateChange(amount: Double): List<Coin> {
-        if(amount._eq(0.05)) {
-            println("$amount returns nickel")
-            return listOf(nickel())
+        if(amount._eq(0.25)) {
+            println("$amount returns quarter")
+            return listOf(quarter())
         }
         if(amount._eq(0.10)) {
             println("$amount returns dime")
             return listOf(dime())
         }
-        if(amount._eq(0.25)) {
-            println("$amount returns quarter")
-            return listOf(quarter())
+        if(amount._eq(0.05)) {
+            println("$amount returns nickel")
+            return listOf(nickel())
         }
         println("$amount returns nothing")
         return emptyList()
