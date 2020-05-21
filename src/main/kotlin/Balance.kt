@@ -6,4 +6,6 @@ class Balance(private val balance: Double = 0.00) {
     fun isEmpty(): Boolean {
         return balance == 0.00
     }
+
+    fun amount(): Double = balance
 }

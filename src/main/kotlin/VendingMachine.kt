@@ -23,7 +23,7 @@ class VendingMachine(
 
     private fun sell(product: Product): VendingMachine =
             if (balance.isSufficientFor(product.price))
-                vendingMachine(balance = Balance(), display = display.saleSuccessful(), dispenser = dispenser.dispense(product.name))
+                vendingMachine(balance = Balance(), display = display.saleSuccessful(), dispenser = dispenser.dispense(product.name), coinReject = coinReject.difficultstuffWith(balance, product))
             else
                 vendingMachine(display = display.saleFailed(product))
 
@@ -42,11 +42,4 @@ class VendingMachine(
             dispenser: Dispenser = this.dispenser,
             coinReject: CoinReject = this.coinReject
     ): VendingMachine = VendingMachine(balance, display, dispenser, coinReject)
-}
-
-class CoinReject(val coins: List<Coin> = emptyList()) {
-    fun add(coin: Coin): CoinReject {
-        return CoinReject(coins + coin)
-    }
-
 }

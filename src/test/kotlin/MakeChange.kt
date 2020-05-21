@@ -1,4 +1,5 @@
 import io.kotlintest.matchers.collections.shouldBeEmpty
+import io.kotlintest.matchers.collections.shouldContain
 import io.kotlintest.specs.StringSpec
 
 //MAKE CHANGE
@@ -19,5 +20,16 @@ class MakeChange : StringSpec({
                 .pressButton1()
 
         machine.coinReject().shouldBeEmpty()
+    }
+    "one quarter returned"{
+        val machine = VendingMachine()
+                .insert(quarter())
+                .insert(quarter())
+                .insert(quarter())
+                .insert(quarter())
+                .insert(quarter())
+                .pressButton1()
+
+        machine.coinReject().shouldContain(quarter())
     }
 })
