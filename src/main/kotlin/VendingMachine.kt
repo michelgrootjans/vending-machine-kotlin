@@ -25,7 +25,7 @@ class VendingMachine(
 
     private fun sell(product: Product): VendingMachine =
             if (sufficientFundsFor(product))
-                vendingMachine(balance = 0.00, dispenser = dispenser + product.name, display = SaleSuccessful())
+                vendingMachine(balance = 0.00, dispenser = dispenser + product.name, display = SaleSuccessful(), dispenser2 = dispenser2.dispense(product.name))
             else
                 vendingMachine(display = SaleFailed(product))
 
@@ -49,6 +49,9 @@ class VendingMachine(
     ): VendingMachine = VendingMachine(balance, display, dispenser, coinReject)
 }
 
-class Dispenser {
+class Dispenser(val items : List<String> = emptyList()) {
+    fun dispense(item: String): Dispenser {
+        return Dispenser(items + item)
+    }
 
 }
