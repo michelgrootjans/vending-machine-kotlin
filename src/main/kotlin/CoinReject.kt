@@ -8,6 +8,6 @@ class CoinReject(val coins: List<Coin> = emptyList()) {
         if(balance.amount() > product.price) {
             return add(change[0])
         }
-        return CoinReject(balance.changeFor(product.price))
+        return CoinReject( coins  + balance.changeFor(product.price))
     }
 }
