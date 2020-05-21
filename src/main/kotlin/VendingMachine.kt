@@ -8,7 +8,11 @@ class VendingMachine(
     val state: State = AtRest()
 ) {
     data class Product(val name: String, val price: Double)
-    open class State {}
+    open class State {
+        fun display(balance: Double): String {
+            return "%.2f".format(balance)
+        }
+    }
     class AtRest : State() {}
 
     val inventory = mapOf(
@@ -30,7 +34,7 @@ class VendingMachine(
 
     fun display(): String = when (balance) {
         0.00 -> defaultMessage
-        else -> "%.2f".format(balance)
+        else -> state.display(balance)
     }
 
     fun dispenser(): List<String> = dispenser
