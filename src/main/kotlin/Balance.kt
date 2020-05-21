@@ -1,6 +1,6 @@
 class Balance(private val balance: Double = 0.00, private val coins: List<Coin> = emptyList()) {
 
-    fun show(): String = "%.2f".format(balance)
+    fun show(): String = "%.2f".format(balanc())
     fun isSufficientFor(amount: Double): Boolean = amount <= balance
     fun add(amount: Double, coin: Coin): Balance = Balance(balance + amount, coins + coin)
     fun isEmpty(): Boolean {
