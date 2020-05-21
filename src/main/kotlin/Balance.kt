@@ -15,15 +15,15 @@ class Balance(private val coins: List<Coin> = emptyList()) {
     }
 
     private fun calculateChange(amount: Double): List<Coin> {
-        if(amount.equalsDelta(0.05)) {
+        if(amount._eq(0.05)) {
             println("$amount returns nickel")
             return listOf(nickel())
         }
-        if(amount.equalsDelta(0.10)) {
+        if(amount._eq(0.10)) {
             println("$amount returns dime")
             return listOf(dime())
         }
-        if(amount.equalsDelta(0.25)) {
+        if(amount._eq(0.25)) {
             println("$amount returns quarter")
             return listOf(quarter())
         }
@@ -38,5 +38,5 @@ class Balance(private val coins: List<Coin> = emptyList()) {
         else -> 0.00
     }
 
-    fun Double.equalsDelta(other: Double) = abs(this - other) < 0.0001
+    fun Double._eq(other: Double) = abs(this - other) < 0.0001
 }
