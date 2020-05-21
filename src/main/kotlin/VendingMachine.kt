@@ -9,11 +9,20 @@ class VendingMachine(
 ) {
     data class Product(val name: String, val price: Double)
     open class State {
-        fun display(balance: Double): String {
+        open fun display(balance: Double): String {
             return "%.2f".format(balance)
         }
     }
-    class AtRest : State() {}
+    class AtRest : State() {
+        override fun display(balance: Double): String {
+            return "%.2f".format(balance)
+        }
+    }
+    class SaleSuccessful : State() {
+        override fun display(balance: Double): String {
+            return "THANK YOU"
+        }
+    }
 
     val inventory = mapOf(
             1 to Product("cola", 1.00),
@@ -48,7 +57,8 @@ class VendingMachine(
                         0.00,
                         dispenser + product.name,
                         coinReject,
-                        "THANK YOU"
+                        "THANK YOU",
+                        SaleSuccessful()
                 )
             return VendingMachine(
                     balance,
@@ -74,4 +84,5 @@ class VendingMachine(
         else -> 0.00
     }
 }
+
 
