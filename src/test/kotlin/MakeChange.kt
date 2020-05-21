@@ -39,16 +39,6 @@ class MakeChange : StringSpec({
 })
 
 class CalculateChange : StringSpec({
-    "no change for 0"{
-        Balance().changeFor(0.00).shouldBeEmpty()
-    }
-    "quarter change for 0"{
-        Balance().add(quarter()).changeFor(0.00).shouldContain(quarter())
-    }
-    "quarter change for quarter"{
-        Balance().add(quarter()).changeFor(0.25).shouldBeEmpty()
-    }
-
     "no change expected" {
         table(
                 headers("coins", "price"),
@@ -64,15 +54,6 @@ class CalculateChange : StringSpec({
                 headers("coins", "price", "change"),
                 row(listOf(quarter()), 0.00, listOf(quarter())),
                 row(listOf(quarter()), 0.00, listOf(quarter()))
-        ).forAll(fun(coins: List<Coin>, price: Double, change: List<Coin>) {
-            val machine = coins.fold(VendingMachine(), { machine, coin -> machine.insert(coin) })
-                    .insert(quarter())
-                    .insert(quarter())
-                    .insert(quarter())
-                    .insert(quarter())
-                    .pressButton1()
-
-            machine.coinReturn().shouldContainAll(change)
-        })
+        ).forAll{coins, price, change -> Balance().add(coins).changeFor(price).shouldContainAll(change)}
     }
 })
