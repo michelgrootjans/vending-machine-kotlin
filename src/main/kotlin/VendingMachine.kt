@@ -24,7 +24,7 @@ class VendingMachine(
 
     private fun sell(product: Product): VendingMachine =
             if (sufficientFundsFor(product))
-                vendingMachine(balance = 0.00, dispenser = dispenser + product.name, display = SaleSuccessful(), dispenser2 = dispenser2.dispense(product.name))
+                vendingMachine(balance = 0.00, display = SaleSuccessful(), dispenser2 = dispenser2.dispense(product.name))
             else
                 vendingMachine(display = SaleFailed(product))
 
