@@ -32,6 +32,7 @@ class MakeChange : StringSpec({
         machine.coinReturn().shouldContain(quarter())
     }
 })
+
 class CalculateChange : StringSpec({
     "no change for 0"{
         Balance().changeFor(0.00).shouldBeEmpty()
