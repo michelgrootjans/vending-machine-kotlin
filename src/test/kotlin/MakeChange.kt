@@ -62,6 +62,7 @@ class CalculateChange : StringSpec({
 
                 row(listOf(nickel()), 0.00, listOf(nickel())),
 
+                row(listOf(quarter(), quarter()), 0.00, listOf(quarter(), quarter())),
                 row(listOf(quarter(), dime()), 0.00, listOf(quarter(), dime())),
                 row(listOf(quarter(), nickel()), 0.00, listOf(quarter(), nickel()))
 
