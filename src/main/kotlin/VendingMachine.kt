@@ -6,7 +6,7 @@ class VendingMachine(
 ) {
     private val catalog = Catalog()
 
-    fun tick(): VendingMachine = vendingMachine(display = DefaultDisplay())
+    fun tick(): VendingMachine = vendingMachine(display = display.default())
 
     fun display(): String = display.show(balance)
     fun dispenser(): List<String> = dispenser.items
