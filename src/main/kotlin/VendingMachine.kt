@@ -4,9 +4,12 @@ class VendingMachine(
     val balance: Double = 0.00,
     val dispenser: List<String> = emptyList(),
     val coinReject: List<Coin> = emptyList(),
-    val defaultMessage: String = "INSERT COIN"
+    val defaultMessage: String = "INSERT COIN",
+    val state: State = AtRest()
 ) {
     data class Product(val name: String, val price: Double)
+    open class State {}
+    class AtRest : State() {}
 
     val inventory = mapOf(
             1 to Product("cola", 1.00),
@@ -67,3 +70,4 @@ class VendingMachine(
         else -> 0.00
     }
 }
+
