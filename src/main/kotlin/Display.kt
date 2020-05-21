@@ -1,9 +1,6 @@
-open class Display(val showw: (Balance) -> String = fun(balance: Balance): String {
-    if (balance.isEmpty()) return "INSERT COIN"
-    else return  balance.show()
-}) {
+open class Display(val _show: (Balance) -> String = fun(balance: Balance): String = defaultMessage(balance)) {
 
-    open fun show(balance: Balance): String = showw(balance)
+    fun show(balance: Balance): String = _show(balance)
 
     open fun saleSuccessful(): Display {
         return Display { balance -> "THANK YOU" }
@@ -16,5 +13,10 @@ open class Display(val showw: (Balance) -> String = fun(balance: Balance): Strin
     fun default(): Display {
         return Display()
     }
+}
+
+private fun defaultMessage(balance: Balance): String {
+    return if (balance.isEmpty()) "INSERT COIN"
+    else balance.show()
 }
 
