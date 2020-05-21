@@ -24,7 +24,7 @@ class VendingMachine(
 
     private fun sell(product: Product): VendingMachine =
             if (sufficientFundsFor(product))
-                vendingMachine(balance = 0.00, display = SaleSuccessful(), dispenser = dispenser.dispense(product.name))
+                vendingMachine(balance = 0.00, balance2 = balance2.subtract(product.price), display = SaleSuccessful(), dispenser = dispenser.dispense(product.name))
             else
                 vendingMachine(display = SaleFailed(product))
 
@@ -48,10 +48,9 @@ class VendingMachine(
     ): VendingMachine = VendingMachine(balance, display, dispenser, coinReject, balance2)
 }
 
-class Balance(val amount: Double = 0.00) {
-    fun add(credit: Double): Balance {
-        return Balance(amount + credit)
-    }
+class Balance(val balance: Double = 0.00) {
+    fun add(amaount: Double): Balance = Balance(balance + amaount)
+    fun subtract(amount: Double): Balance = Balance(balance - amount)
 
 }
 
