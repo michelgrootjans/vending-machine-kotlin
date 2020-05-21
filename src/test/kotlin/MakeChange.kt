@@ -36,7 +36,7 @@ class CalculateChange : StringSpec({
     "no change for 0"{
         Balance().changeFor(0.00).shouldBeEmpty()
     }
-    "change for a quqrter"{
+    "change for a quarter"{
         Balance().add(quarter()).changeFor(0.00).shouldContain(quarter())
     }
 })
