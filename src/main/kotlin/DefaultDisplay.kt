@@ -4,7 +4,7 @@ open class DefaultDisplay {
             else balance.show()
 
     open fun saleSuccessful(): DefaultDisplay {
-        return SaleSuccessful()
+        return SaleSuccessful({ balance -> "THANK YOU" })
     }
 
     fun saleFailed(product: Product): DefaultDisplay {
@@ -16,8 +16,8 @@ open class DefaultDisplay {
     }
 }
 
-private class SaleSuccessful : DefaultDisplay() {
-    override fun show(balance: Balance): String = "THANK YOU"
+private class SaleSuccessful(val function: (balance: Balance) -> String) : DefaultDisplay() {
+    override fun show(balance: Balance): String = function(balance)
 }
 
 private class SaleFailed(private val product: Product) : DefaultDisplay() {
