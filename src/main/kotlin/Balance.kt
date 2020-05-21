@@ -8,7 +8,7 @@ class Balance(private val coins: List<Coin> = emptyList()) {
 
     fun changeFor(price: Double): List<Coin> {
         if (price < amount()) return listOf(quarter())
-        return listOf(quarter())
+        return emptyList()
     }
 
     private fun valueOf(coin: Coin) = when (coin) {
