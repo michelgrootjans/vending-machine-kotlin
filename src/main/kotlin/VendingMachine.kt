@@ -1,11 +1,10 @@
 package vendingmachine
 
 class VendingMachine(
-    val balance: Double = 0.00,
-    val dispenser: List<String> = emptyList(),
-    val coinReject: List<Coin> = emptyList(),
-    val defaultMessage: String = "INSERT COIN",
-    val state: State = AtRest()
+        val balance: Double = 0.00,
+        val dispenser: List<String> = emptyList(),
+        val coinReject: List<Coin> = emptyList(),
+        val state: State = AtRest()
 ) {
     data class Product(val name: String, val price: Double)
     open class State {
@@ -54,13 +53,11 @@ class VendingMachine(
     fun coinReject(): List<Coin> = coinReject
 
     private fun dispense(product: Product): VendingMachine {
-        // warning: ugly code ahead
         if (balance >= product.price) {
                 return VendingMachine(
                         0.00,
                         dispenser + product.name,
                         coinReject,
-                        "THANK YOU",
                         SaleSuccessful()
                 )
         }
@@ -68,7 +65,6 @@ class VendingMachine(
                 0.00,
                 dispenser,
                 coinReject,
-                "PRICE %.2f".format(product.price),
                 SaleFailed(product)
         )
     }
