@@ -1,6 +1,6 @@
-class Catalog() {
-    fun getProduct(i: Int): Product {
-        return catalog[i]!!
+class Catalog {
+    fun getProduct(number: Int): Product {
+        return catalog[number] ?: error("This machine does not have products in slot $number")
     }
 
     private val catalog = mapOf(
