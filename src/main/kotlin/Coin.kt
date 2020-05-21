@@ -1,5 +1,3 @@
-package vendingmachine
-
 data class Coin(val weight: String, val diameter: String)
 
 fun quarter() = Coin("5.670 g", "24.26 mm")

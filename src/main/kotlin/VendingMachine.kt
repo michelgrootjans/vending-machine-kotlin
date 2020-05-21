@@ -1,5 +1,3 @@
-package vendingmachine
-
 class VendingMachine(
         val balance: Double = 0.00,
         val dispenser: List<String> = emptyList(),
@@ -30,7 +28,7 @@ class VendingMachine(
         }
     }
 
-    val inventory = mapOf(
+    private val inventory = mapOf(
             1 to Product("cola", 1.00),
             2 to Product("chips", 0.50),
             3 to Product("candy", 0.65)

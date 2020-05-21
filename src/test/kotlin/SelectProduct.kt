@@ -1,9 +1,11 @@
-package vendingmachine
-
+import VendingMachine
+import dime
 import io.kotlintest.matchers.collections.shouldBeEmpty
 import io.kotlintest.matchers.collections.shouldContainAll
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
+import nickel
+import quarter
 
 //SELECT A PRODUCT
 //As a vendor
