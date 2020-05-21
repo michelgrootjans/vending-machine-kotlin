@@ -32,22 +32,15 @@ class VendingMachine(
                         SaleSuccessful()
                 )
         }
-        return bleh(dispenser = dispenser, display = SaleFailed(product))
+        return vendingMachine(display = SaleFailed(product))
     }
 
-    private fun bleh(
+    private fun vendingMachine(
             balance: Double = this.balance,
+            display: Display = this.display,
             dispenser: List<String> = this.dispenser,
-            coinReject: List<Coin> = this.coinReject,
-            display: Display = this.display
-    ): VendingMachine {
-        return VendingMachine(
-                balance,
-                dispenser,
-                coinReject,
-                display
-        )
-    }
+            coinReject: List<Coin> = this.coinReject
+    ): VendingMachine = VendingMachine(balance, dispenser, coinReject, display)
 
     private fun isValid(coin: Coin): Boolean = listOf(nickel(), dime(), quarter()).contains(coin)
 
