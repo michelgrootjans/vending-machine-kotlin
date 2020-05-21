@@ -1,5 +1,5 @@
 open class Display {
-    open fun show(balance: Double, balance2: Balance): String {
+    open fun show(balance: Double = 0.00, balance2: Balance): String {
         return balance2.show()
     }
 }
