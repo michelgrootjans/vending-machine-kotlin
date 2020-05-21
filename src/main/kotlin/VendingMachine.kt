@@ -3,15 +3,15 @@ class VendingMachine(
         private val display: Display = DefaultDisplay(),
         private val dispenser: List<String> = emptyList(),
         private val coinReject: List<Coin> = emptyList(),
-        private val dispenser2 : Dispenser = Dispenser()
+        private val dispenser2: Dispenser = Dispenser()
 ) {
     private val catalog = Catalog()
 
-    fun tick() : VendingMachine = vendingMachine(display = DefaultDisplay())
+    fun tick(): VendingMachine = vendingMachine(display = DefaultDisplay())
 
     fun insert(coin: Coin): VendingMachine =
-        if (isValid(coin)) vendingMachine(balance = balance + valueOf(coin))
-        else vendingMachine(coinReject = coinReject + coin)
+            if (isValid(coin)) vendingMachine(balance = balance + valueOf(coin))
+            else vendingMachine(coinReject = coinReject + coin)
 
     fun pressButton1(): VendingMachine = sell(catalog.getProduct(1))
     fun pressButton2(): VendingMachine = sell(catalog.getProduct(2))
@@ -22,12 +22,10 @@ class VendingMachine(
     fun dispenser(): List<String> = dispenser
     fun coinReject(): List<Coin> = coinReject
 
-    private fun sell(product: Product): VendingMachine {
-        if (balance >= product.price)
-            return vendingMachine(balance = 0.00, dispenser = dispenser + product.name, display = SaleSuccessful())
-        else
-            return vendingMachine(display = SaleFailed(product))
-    }
+    private fun sell(product: Product): VendingMachine = if (balance >= product.price)
+        vendingMachine(balance = 0.00, dispenser = dispenser + product.name, display = SaleSuccessful())
+    else
+        vendingMachine(display = SaleFailed(product))
 
     private fun isValid(coin: Coin): Boolean = listOf(nickel(), dime(), quarter()).contains(coin)
 
