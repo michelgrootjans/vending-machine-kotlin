@@ -1,6 +1,6 @@
 open class Display {
     open fun show(balance: Double, balance2: Balance): String {
-        return "%.2f".format(balance)
+        return balance2.show()
     }
 }
 class DefaultDisplay : Display() {
