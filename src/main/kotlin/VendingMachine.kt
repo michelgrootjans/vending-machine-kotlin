@@ -11,7 +11,7 @@ class VendingMachine(
 
     fun display(): String = display.show(balance)
     fun dispenser(): List<String> = dispenser.items
-    fun coinReject(): List<Coin> = coinReject
+    fun coinReject(): List<Coin> = coinReject2.coins
 
     fun insert(coin: Coin): VendingMachine = when {
         isValid(coin) -> vendingMachine(balance = balance.add(valueOf(coin)))
