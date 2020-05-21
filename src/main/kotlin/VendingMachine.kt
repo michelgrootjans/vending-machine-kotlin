@@ -15,7 +15,7 @@ class VendingMachine(
 
     fun insert(coin: Coin): VendingMachine = when {
         isValid(coin) -> vendingMachine(balance = balance.add(valueOf(coin)))
-        else -> vendingMachine(coinReject = coinReject + coin, coinReject2 = coinReject2.add(coin))
+        else -> vendingMachine(coinReject2 = coinReject2.add(coin))
     }
 
     fun pressButton1(): VendingMachine = sell(catalog.getProduct(1))
