@@ -1,7 +1,6 @@
 class VendingMachine(
         private val balance: Double = 0.00,
         private val display: Display = DefaultDisplay(),
-        private val dispenser: List<String> = emptyList(),
         private val coinReject: List<Coin> = emptyList(),
         private val dispenser2: Dispenser = Dispenser()
 ) {
@@ -42,10 +41,9 @@ class VendingMachine(
     private fun vendingMachine(
             balance: Double = this.balance,
             display: Display = this.display,
-            dispenser: List<String> = emptyList(),
             coinReject: List<Coin> = this.coinReject,
             dispenser2: Dispenser = this.dispenser2
-    ): VendingMachine = VendingMachine(balance, display, dispenser, coinReject, dispenser2)
+    ): VendingMachine = VendingMachine(balance, display, coinReject, dispenser2)
 }
 
 class Dispenser(val items : List<String> = emptyList()) {
