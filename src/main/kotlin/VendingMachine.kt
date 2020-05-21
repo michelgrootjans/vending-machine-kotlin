@@ -38,11 +38,11 @@ class VendingMachine(
     private fun bleh(
             product: Product,
             balance: Double = this.balance,
-            dispenser: List<String>
+            dispenser: List<String> = this.dispenser
     ): VendingMachine {
         return VendingMachine(
                 balance,
-                this.dispenser,
+                dispenser,
                 coinReject,
                 SaleFailed(product)
         )
