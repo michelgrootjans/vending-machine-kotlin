@@ -6,15 +6,15 @@ class Balance(private val coins: List<Coin> = emptyList()) {
 
     fun amount(): Double = coins.sumByDouble { coin -> valueOf(coin) }
 
+    fun remainingCoinsAfter(price: Double): Coin {
+        return quarter()
+    }
+
     private fun valueOf(coin: Coin) = when (coin) {
         nickel() -> 0.05
         dime() -> 0.10
         quarter() -> 0.25
         else -> 0.00
-    }
-
-    fun remainingCoinsAfter(price: Double): Coin {
-        return quarter()
     }
 
 }
