@@ -49,7 +49,6 @@ class VendingMachine(
     fun pressButton3(): VendingMachine = dispense(inventory.getValue(3))
 
     fun display(): String = when (balance) {
-        0.00 -> state.display(balance)
         else -> state.display(balance)
     }
 
