@@ -4,7 +4,7 @@ class Balance(private val balance: Double = 0.00, private val coins: List<Coin> 
     fun isSufficientFor(amount: Double): Boolean = amount <= balanc()
     fun add(amount: Double, coin: Coin): Balance = Balance(balance + amount, coins + coin)
     fun isEmpty(): Boolean {
-        return balance == 0.00
+        return balanc() == 0.00
     }
     fun balanc(): Double = coins.sumByDouble { coin -> valueOf(coin) }
 
