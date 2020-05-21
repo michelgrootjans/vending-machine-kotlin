@@ -23,10 +23,13 @@ class VendingMachine(
     fun dispenser(): List<String> = dispenser
     fun coinReject(): List<Coin> = coinReject
 
-    private fun sell(product: Product): VendingMachine = if (balance >= product.price)
-        vendingMachine(balance = 0.00, dispenser = dispenser + product.name, display = SaleSuccessful())
-    else
-        vendingMachine(display = SaleFailed(product))
+    private fun sell(product: Product): VendingMachine =
+            if (sufficientFundsFor(product))
+                vendingMachine(balance = 0.00, dispenser = dispenser + product.name, display = SaleSuccessful())
+            else
+                vendingMachine(display = SaleFailed(product))
+
+    private fun sufficientFundsFor(product: Product) = balance >= product.price
 
     private fun isValid(coin: Coin): Boolean = listOf(nickel(), dime(), quarter()).contains(coin)
 
