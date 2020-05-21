@@ -62,7 +62,8 @@ class CalculateChange : StringSpec({
 
                 row(listOf(nickel()), 0.00, listOf(nickel())),
 
-                row(listOf(quarter(), dime()), 0.00, listOf(quarter(), dime()))
+                row(listOf(quarter(), dime()), 0.00, listOf(quarter(), dime())),
+                row(listOf(quarter(), nickel()), 0.00, listOf(quarter(), nickel()))
 
         ).forAll { coins, price, change -> Balance().add(coins).changeFor(price).shouldContainAll(change) }
     }
