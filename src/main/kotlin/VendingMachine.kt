@@ -32,20 +32,21 @@ class VendingMachine(
                         SaleSuccessful()
                 )
         }
-        return bleh(product = product, dispenser = dispenser)
+        return bleh(product = product, dispenser = dispenser, display = SaleFailed(product))
     }
 
     private fun bleh(
             product: Product,
             balance: Double = this.balance,
             dispenser: List<String> = this.dispenser,
-            coinReject: List<Coin> = this.coinReject
+            coinReject: List<Coin> = this.coinReject,
+            display: Display = this.display
     ): VendingMachine {
         return VendingMachine(
                 balance,
                 dispenser,
                 coinReject,
-                SaleFailed(product)
+                display
         )
     }
 
