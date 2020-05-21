@@ -1,6 +1,6 @@
 class VendingMachine(
         private val balance: Balance = Balance(),
-        private val display: AbstractDisplay = DefaultDisplay(),
+        private val display: AbstractDisplay = AbstractDisplay(),
         private val dispenser: Dispenser = Dispenser(),
         private val coinReject: List<Coin> = emptyList()
 ) {
