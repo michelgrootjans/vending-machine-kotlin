@@ -4,7 +4,6 @@ class VendingMachine(
         private val coinReject: List<Coin> = emptyList(),
         private val display: Display = DefaultDisplay()
 ) {
-
     private val catalog = Catalog()
 
     fun tick() : VendingMachine = VendingMachine(balance, dispenser, coinReject)
@@ -14,9 +13,9 @@ class VendingMachine(
         else VendingMachine(balance, dispenser, coinReject + coin)
 
 
-    fun pressButton1(): VendingMachine = sell(catalog.getValue(1))
-    fun pressButton2(): VendingMachine = sell(catalog.getValue(2))
-    fun pressButton3(): VendingMachine = sell(catalog.getValue(3))
+    fun pressButton1(): VendingMachine = sell(catalog.getProduct(1))
+    fun pressButton2(): VendingMachine = sell(catalog.getProduct(2))
+    fun pressButton3(): VendingMachine = sell(catalog.getProduct(3))
 
     fun display(): String = display.show(balance)
 

@@ -1,5 +1,5 @@
 class Catalog() {
-    fun getValue(i: Int): Product {
+    fun getProduct(i: Int): Product {
         return catalog[i]!!
     }
 
