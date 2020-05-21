@@ -9,7 +9,6 @@ class Balance(private val coins: List<Coin> = emptyList()) {
     fun balance(): Double = coins.sumByDouble { coin -> valueOf(coin) }
 
     fun changeFor(amount: Double): List<Coin> {
-        if (balance() <= amount) return emptyList()
         return calculateChange(balance() - amount)
     }
 
