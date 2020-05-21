@@ -55,7 +55,7 @@ class CalculateChange : StringSpec({
                 headers("coins", "price", "change"),
                 row(listOf(quarter()), 0.00, listOf(quarter())),
                 row(listOf(quarter()), 0.15, listOf(dime())),
-//                row(listOf(quarter()), 0.20, listOf(nickel())),
+                row(listOf(quarter()), 0.20, listOf(nickel())),
 
                 row(listOf(dime()), 0.00, listOf(dime())),
                 row(listOf(dime()), 0.05, listOf(nickel())),

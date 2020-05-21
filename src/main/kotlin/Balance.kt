@@ -1,3 +1,5 @@
+import java.lang.Math.abs
+
 class Balance(private val coins: List<Coin> = emptyList()) {
     fun show(): String = "%.2f".format(balance())
     fun isSufficientFor(amount: Double): Boolean = balance() >= amount
@@ -13,9 +15,19 @@ class Balance(private val coins: List<Coin> = emptyList()) {
     }
 
     private fun calculateChange(amount: Double): List<Coin> {
-        if(amount == 0.05) return listOf(nickel())
-        if(amount == 0.10) return listOf(dime())
-        if(amount == 0.25) return listOf(quarter())
+        if(amount.equalsDelta(0.05)) {
+            println("$amount returns nickel")
+            return listOf(nickel())
+        }
+        if(amount.equalsDelta(0.10)) {
+            println("$amount returns dime")
+            return listOf(dime())
+        }
+        if(amount.equalsDelta(0.25)) {
+            println("$amount returns quarter")
+            return listOf(quarter())
+        }
+        println("$amount returns nothing")
         return emptyList()
     }
 
@@ -25,4 +37,6 @@ class Balance(private val coins: List<Coin> = emptyList()) {
         quarter() -> 0.25
         else -> 0.00
     }
+
+    fun Double.equalsDelta(other: Double) = abs(this - other) < 0.0001
 }
