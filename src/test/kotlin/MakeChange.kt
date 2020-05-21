@@ -32,3 +32,26 @@ class MakeChange : StringSpec({
         machine.coinReturn().shouldContain(quarter())
     }
 })
+class MakeChange2 : StringSpec({
+    "No change for normal sale"{
+        val machine = VendingMachine()
+                .insert(quarter())
+                .insert(quarter())
+                .insert(quarter())
+                .insert(quarter())
+                .pressButton1()
+
+        machine.coinReturn().shouldBeEmpty()
+    }
+    "one quarter returned"{
+        val machine = VendingMachine()
+                .insert(quarter())
+                .insert(quarter())
+                .insert(quarter())
+                .insert(quarter())
+                .insert(quarter())
+                .pressButton1()
+
+        machine.coinReturn().shouldContain(quarter())
+    }
+})
