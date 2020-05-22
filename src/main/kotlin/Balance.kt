@@ -16,9 +16,9 @@ class Balance(private val coins: List<Coin> = emptyList()) {
 
     private fun calculateChange(amount: Double): List<Coin> {
         when {
-            amount._ge(0.25) -> return calculateChange(amount - 0.25) + quarter()
-            amount._ge(0.10) -> return calculateChange(amount - 0.10) + dime()
-            amount._ge(0.05) -> return calculateChange(amount - 0.05) + nickel()
+            amount.greaterOrEqualTo(0.25) -> return calculateChange(amount - 0.25) + quarter()
+            amount.greaterOrEqualTo(0.10) -> return calculateChange(amount - 0.10) + dime()
+            amount.greaterOrEqualTo(0.05) -> return calculateChange(amount - 0.05) + nickel()
             else -> return emptyList()
         }
     }
@@ -31,6 +31,6 @@ class Balance(private val coins: List<Coin> = emptyList()) {
     }
 
     // don't look - ugly code ahead
-    fun Double._eq(other: Double) = abs(this - other) < 0.0001
-    fun Double._ge(other: Double) = this > other || this._eq(other)
+    fun Double.equalTo(other: Double) = abs(this - other) < 0.0001
+    fun Double.greaterOrEqualTo(other: Double) = this > other || this.equalTo(other)
 }
