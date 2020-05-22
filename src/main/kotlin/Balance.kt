@@ -33,4 +33,5 @@ class Balance(private val coins: List<Coin> = emptyList()) {
     // don't look - ugly code ahead
     fun Double._equalTo(other: Double) = abs(this - other) < 0.0001
     fun Double._greaterOrEqualTo(other: Double) = this > other || this._equalTo(other)
+    fun acceptsCoin(coin: Coin): Boolean = listOf(nickel(), dime(), quarter()).contains(coin)
 }
