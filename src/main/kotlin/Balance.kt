@@ -5,14 +5,10 @@ class Balance(private val coins: List<Coin> = emptyList()) {
     fun isSufficientFor(amount: Double): Boolean = balance() >= amount
     fun add(coin: Coin): Balance = Balance(coins + coin)
     fun add(newCoins: List<Coin>): Balance = Balance(coins + newCoins)
-
     fun isEmpty(): Boolean = balance() == 0.00
-
+    fun acceptsCoin(coin: Coin): Boolean = listOf(nickel(), dime(), quarter()).contains(coin)
     fun balance(): Double = coins.sumByDouble { coin -> valueOf(coin) }
-
-    fun changeFor(amount: Double): List<Coin> {
-        return toCoins(balance() - amount)
-    }
+    fun changeFor(amount: Double): List<Coin> = toCoins(balance() - amount)
 
     private fun toCoins(amount: Double): List<Coin> {
         when {
@@ -33,5 +29,4 @@ class Balance(private val coins: List<Coin> = emptyList()) {
     // don't look - ugly code ahead
     fun Double._equalTo(other: Double) = abs(this - other) < 0.0001
     fun Double._greaterOrEqualTo(other: Double) = this > other || this._equalTo(other)
-    fun acceptsCoin(coin: Coin): Boolean = listOf(nickel(), dime(), quarter()).contains(coin)
 }
