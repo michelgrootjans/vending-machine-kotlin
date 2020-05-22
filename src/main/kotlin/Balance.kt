@@ -11,14 +11,14 @@ class Balance(private val coins: List<Coin> = emptyList()) {
     fun balance(): Double = coins.sumByDouble { coin -> valueOf(coin) }
 
     fun changeFor(amount: Double): List<Coin> {
-        return changeFo(balance() - amount)
+        return toCoins(balance() - amount)
     }
 
-    private fun changeFo(amount: Double): List<Coin> {
+    private fun toCoins(amount: Double): List<Coin> {
         when {
-            amount.greaterOrEqualTo(0.25) -> return changeFo(amount - 0.25) + quarter()
-            amount.greaterOrEqualTo(0.10) -> return changeFo(amount - 0.10) + dime()
-            amount.greaterOrEqualTo(0.05) -> return changeFo(amount - 0.05) + nickel()
+            amount._greaterOrEqualTo(0.25) -> return toCoins(amount - 0.25) + quarter()
+            amount._greaterOrEqualTo(0.10) -> return toCoins(amount - 0.10) + dime()
+            amount._greaterOrEqualTo(0.05) -> return toCoins(amount - 0.05) + nickel()
             else -> return emptyList()
         }
     }
@@ -31,6 +31,6 @@ class Balance(private val coins: List<Coin> = emptyList()) {
     }
 
     // don't look - ugly code ahead
-    fun Double.equalTo(other: Double) = abs(this - other) < 0.0001
-    fun Double.greaterOrEqualTo(other: Double) = this > other || this.equalTo(other)
+    fun Double._equalTo(other: Double) = abs(this - other) < 0.0001
+    fun Double._greaterOrEqualTo(other: Double) = this > other || this._equalTo(other)
 }
