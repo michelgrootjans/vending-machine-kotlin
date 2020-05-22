@@ -17,11 +17,13 @@ class Balance(private val coins: List<Coin> = emptyList()) {
     private fun toCoins(amount: Double): List<Coin> {
         when {
             amount._greaterOrEqualTo(valueOf(quarter())) -> return toCoins(amount - valueOf(quarter())) + quarter()
-            amount._greaterOrEqualTo(0.10) -> return toCoins(amount - valueOf(dime())) + dime()
-            amount._greaterOrEqualTo(0.05) -> return toCoins(amount - 0.05) + nickel()
+            amount._greaterOrEqualTo(valueOf(dime())) -> return bleh(amount, dime())
+            amount._greaterOrEqualTo(valueOf(nickel())) -> return bleh(amount, nickel())
             else -> return emptyList()
         }
     }
+
+    private fun bleh(amount: Double, coin: Coin) = toCoins(amount - valueOf(coin)) + coin
 
     private fun valueOf(coin: Coin) = when (coin) {
         nickel() -> 0.05
