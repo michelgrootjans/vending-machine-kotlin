@@ -11,14 +11,14 @@ class Balance(private val coins: List<Coin> = emptyList()) {
     fun balance(): Double = coins.sumByDouble { coin -> valueOf(coin) }
 
     fun changeFor(amount: Double): List<Coin> {
-        return calculateChange(balance() - amount)
+        return changeFo(balance() - amount)
     }
 
-    private fun calculateChange(amount: Double): List<Coin> {
+    private fun changeFo(amount: Double): List<Coin> {
         when {
-            amount.greaterOrEqualTo(0.25) -> return calculateChange(amount - 0.25) + quarter()
-            amount.greaterOrEqualTo(0.10) -> return calculateChange(amount - 0.10) + dime()
-            amount.greaterOrEqualTo(0.05) -> return calculateChange(amount - 0.05) + nickel()
+            amount.greaterOrEqualTo(0.25) -> return changeFo(amount - 0.25) + quarter()
+            amount.greaterOrEqualTo(0.10) -> return changeFo(amount - 0.10) + dime()
+            amount.greaterOrEqualTo(0.05) -> return changeFo(amount - 0.05) + nickel()
             else -> return emptyList()
         }
     }
