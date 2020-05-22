@@ -31,7 +31,7 @@ class VendingMachine(
                 )
             else
                 vendingMachine(display = display.saleFailed(product))
-    
+
     private fun vendingMachine(
             balance: Balance = this.balance,
             display: Display = this.display,
