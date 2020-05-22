@@ -16,8 +16,8 @@ class Balance(private val coins: List<Coin> = emptyList()) {
 
     private fun toCoins(amount: Double): List<Coin> {
         when {
-            amount._greaterOrEqualTo(valueOf(quarter())) -> return toCoins(amount - 0.25) + quarter()
-            amount._greaterOrEqualTo(0.10) -> return toCoins(amount - 0.10) + dime()
+            amount._greaterOrEqualTo(valueOf(quarter())) -> return toCoins(amount - valueOf(quarter())) + quarter()
+            amount._greaterOrEqualTo(0.10) -> return toCoins(amount - valueOf(dime())) + dime()
             amount._greaterOrEqualTo(0.05) -> return toCoins(amount - 0.05) + nickel()
             else -> return emptyList()
         }
