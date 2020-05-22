@@ -17,8 +17,8 @@ class Balance(private val coins: List<Coin> = emptyList()) {
     private fun toCoins(amount: Double): List<Coin> {
         when {
             blah(amount, quarter()) -> return bleh(amount, quarter())
-            blah(amount, dime()) -> return bleh(amount, dime())
-            blah(amount, nickel()) -> return bleh(amount, nickel())
+            blah(amount, dime())    -> return bleh(amount, dime())
+            blah(amount, nickel())  -> return bleh(amount, nickel())
             else -> return emptyList()
         }
     }
