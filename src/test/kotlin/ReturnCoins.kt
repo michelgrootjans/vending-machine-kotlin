@@ -23,4 +23,17 @@ class ReturnCoins : StringSpec({
 
         machine.coinReturn().shouldContainAll(quarter())
     }
+    "Insert 1 dollar"{
+        val machine = VendingMachine()
+            .insert(quarter())
+            .insert(dime())
+            .insert(dime())
+            .insert(quarter())
+            .insert(dime())
+            .insert(dime())
+            .insert(dime())
+            .pressCoinReturn();
+
+        machine.coinReturn().shouldContainAll(quarter(), dime(), dime(), quarter(), dime(), dime(), dime())
+    }
 })
