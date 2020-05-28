@@ -1,6 +1,6 @@
 import java.lang.Math.abs
 
-class Balance(private val coins: List<Coin> = emptyList()) {
+class Balance(val coins: List<Coin> = emptyList()) {
     fun show(): String = "%.2f".format(balance())
     fun isSufficientFor(amount: Double): Boolean = balance() >= amount
     fun add(coin: Coin): Balance = Balance(coins + coin)

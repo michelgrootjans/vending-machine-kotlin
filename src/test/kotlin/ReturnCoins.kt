@@ -1,4 +1,5 @@
 import io.kotlintest.matchers.collections.shouldBeEmpty
+import io.kotlintest.matchers.collections.shouldContainAll
 import io.kotlintest.specs.StringSpec
 
 //RETURN COINS
@@ -14,5 +15,12 @@ class ReturnCoins : StringSpec({
                 .pressCoinReturn();
 
         machine.coinReturn().shouldBeEmpty()
+    }
+    "Insert quarter"{
+        val machine = VendingMachine()
+                .insert(quarter())
+                .pressCoinReturn();
+
+        machine.coinReturn().shouldContainAll(quarter())
     }
 })
