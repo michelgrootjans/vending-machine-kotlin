@@ -20,6 +20,7 @@ class VendingMachine(
     fun pressButton1(): VendingMachine = sell(catalog.getProduct(1))
     fun pressButton2(): VendingMachine = sell(catalog.getProduct(2))
     fun pressButton3(): VendingMachine = sell(catalog.getProduct(3))
+    fun pressCoinReturn(): VendingMachine = vendingMachine()
 
     private fun sell(product: Product): VendingMachine =
             if (balance.isSufficientFor(product.price))
