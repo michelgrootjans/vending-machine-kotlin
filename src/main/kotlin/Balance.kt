@@ -6,17 +6,15 @@ import java.util.*
 class Balance(val coins: List<Coin> = emptyList()) {
     fun show(): String = format(balance())
 
-    fun isSufficientFor(amount: Double): Boolean = balance() >= amount
+    fun isSufficientFor(amount: Amount): Boolean = Amount(balance()) >= amount
     fun add(coin: Coin): Balance = Balance(coins + coin)
     fun add(newCoins: List<Coin>): Balance = Balance(coins + newCoins)
     fun isEmpty(): Boolean = balance() == 0.00
     fun acceptsCoin(coin: Coin): Boolean = listOf(nickel(), dime(), quarter()).contains(coin)
     fun balance(): Double = coins.sumByDouble { coin -> valueOf(coin) }
-    fun changeFor(amount: Double): List<Coin> = toCoins(balance() - amount)
+    fun changeFor(amount: Amount): List<Coin> = toCoins(Amount(balance()) - amount)
 
-    private fun format(amount: Double): String {
-        return Amount(amount).format()
-    }
+    private fun format(amount: Double): String = Amount(amount).format()
 
     private fun toCoins(amount: Double): List<Coin> {
         when {
@@ -39,6 +37,8 @@ class Balance(val coins: List<Coin> = emptyList()) {
     fun Double._greaterOrEqualTo(other: Double) = this > other || this._equalTo(other)
 }
 
-class Amount(val amount: Double) {
-    fun format(): String = DecimalFormat("0.00", DecimalFormatSymbols(Locale.ENGLISH)).format(amount)
+class Amount(val value: Double) {
+    fun format(): String = DecimalFormat("0.00", DecimalFormatSymbols(Locale.ENGLISH)).format(value)
+    operator fun compareTo(amount: Amount): Int = this.value.compareTo(amount.value)
+    operator fun minus(amount: Amount): Double = this.value - amount.value
 }

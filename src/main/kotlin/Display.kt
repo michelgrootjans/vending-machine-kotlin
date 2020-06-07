@@ -3,7 +3,7 @@ class Display(val _show: (Balance) -> String = fun(balance: Balance): String = d
 
     fun default(): Display = Display()
     fun saleSuccessful(): Display = Display { _ -> "THANK YOU" }
-    fun saleFailed(product: Product): Display = Display { balance -> "PRICE ${Amount(product.price).format()}" }
+    fun saleFailed(product: Product): Display = Display { balance -> "PRICE ${product.price.format()}" }
 }
 
 private fun defaultMessage(balance: Balance): String {
