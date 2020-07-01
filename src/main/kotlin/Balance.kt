@@ -6,7 +6,7 @@ class Balance(val coins: List<Coin> = emptyList()) {
     fun add(coin: Coin): Balance = Balance(coins + coin)
     fun add(newCoins: List<Coin>): Balance = Balance(coins + newCoins)
     fun isEmpty(): Boolean = balance() == 0.00
-    fun acceptsCoin(coin: Coin): Boolean = listOf(nickel(), dime(), quarter()).contains(coin)
+    fun accepts(coin: Coin): Boolean = listOf(nickel(), dime(), quarter()).contains(coin)
     fun balance(): Double = coins.sumByDouble { coin -> valueOf(coin) }
     fun changeFor(amount: Double): List<Coin> = toCoins(balance() - amount)
 
@@ -27,6 +27,7 @@ class Balance(val coins: List<Coin> = emptyList()) {
     }
 
     // don't look - ugly code ahead
+    // see: https://levelup.gitconnected.com/double-equality-in-kotlin-f99392cba0e4
     fun Double._equalTo(other: Double) = abs(this - other) < 0.0001
     fun Double._greaterOrEqualTo(other: Double) = this > other || this._equalTo(other)
 }
