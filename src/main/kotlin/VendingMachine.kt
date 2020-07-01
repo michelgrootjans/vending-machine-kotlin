@@ -2,9 +2,9 @@ class VendingMachine(
         private val balance: Balance = Balance(),
         private val display: Display = Display(),
         private val dispenser: Dispenser = Dispenser(),
-        private val coinReturn: CoinReturn = CoinReturn()
+        private val coinReturn: CoinReturn = CoinReturn(),
+        private val catalog : Catalog = Catalog()
 ) {
-    private val catalog = Catalog()
 
     fun tick(): VendingMachine = vendingMachine(display = display.default())
 
