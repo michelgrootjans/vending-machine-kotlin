@@ -1,7 +1,5 @@
-import io.kotlintest.matchers.collections.shouldBeEmpty
-import io.kotlintest.matchers.collections.shouldContainAll
-import io.kotlintest.shouldBe
-import io.kotlintest.specs.StringSpec
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Test
 
 //    ACCEPT COINS
 //            As a vendor
@@ -20,79 +18,97 @@ import io.kotlintest.specs.StringSpec
 //    coins by their weight and size and then assigns a value to what was inserted.
 //    You will need to do something similar. This can be simulated using strings,
 //    constants, enums, symbols, or something of that nature.
-class AcceptCoins : StringSpec({
-    "At rest" {
+class AcceptCoins {
+    @Test
+    fun `At rest`() {
         val machine = VendingMachine()
 
-        machine.display() shouldBe "INSERT COIN"
-        machine.coinReturn().shouldBeEmpty()
+        assertThat(machine.display()).isEqualTo("INSERT COIN")
+        assertThat(machine.coinReturn()).isEmpty()
     }
-    "Insert Cent" {
-        val machine = VendingMachine()
-                .insert(cent())
 
-        machine.display() shouldBe "INSERT COIN"
-        machine.coinReturn().shouldContainAll(cent())
-    }
-    "Insert Nickel" {
+    @Test
+    fun `Insert Cent`() {
         val machine = VendingMachine()
-                .insert(nickel())
+            .insert(cent())
 
-        machine.display() shouldBe "0.05"
-        machine.coinReturn().shouldBeEmpty()
+        assertThat(machine.display()).isEqualTo("INSERT COIN")
+        assertThat(machine.coinReturn()).containsExactly(cent())
     }
-    "Insert Dime" {
+
+    @Test
+    fun `Insert Nickel`() {
         val machine = VendingMachine()
-                .insert(dime())
-        machine.display() shouldBe "0.10"
-        machine.coinReturn().shouldBeEmpty()
+            .insert(nickel())
+
+        assertThat(machine.display()).isEqualTo("0.05")
+        assertThat(machine.coinReturn()).isEmpty()
     }
-    "Insert Quarter" {
+
+    @Test
+    fun `Insert Dime`() {
         val machine = VendingMachine()
-                .insert(quarter())
-        machine.display() shouldBe "0.25"
-        machine.coinReturn().shouldBeEmpty()
+            .insert(dime())
+        assertThat(machine.display()).isEqualTo("0.10")
+        assertThat(machine.coinReturn()).isEmpty()
     }
-    "Insert Fake Dime with different weight" {
+
+    @Test
+    fun `Insert Quarter`() {
+        val machine = VendingMachine()
+            .insert(quarter())
+        assertThat(machine.display()).isEqualTo("0.25")
+        assertThat(machine.coinReturn()).isEmpty()
+    }
+
+    @Test
+    fun `Insert Fake Dime with different weight`() {
         val fakeDime = Coin("2.260 g", "17.91 mm")
         val machine = VendingMachine()
-                .insert(fakeDime)
+            .insert(fakeDime)
 
-        machine.display() shouldBe "INSERT COIN"
-        machine.coinReturn().shouldContainAll(fakeDime)
+        assertThat(machine.display()).isEqualTo("INSERT COIN")
+        assertThat(machine.coinReturn()).containsExactly(fakeDime)
     }
-    "Insert Fake Dime with different dimension" {
+
+    @Test
+    fun `Insert Fake Dime with different dimension`() {
         val fakeDime = Coin("2.268 g", "17.9 mm")
         val machine = VendingMachine()
-                .insert(fakeDime)
+            .insert(fakeDime)
 
-        machine.display() shouldBe "INSERT COIN"
-        machine.coinReturn().shouldContainAll(fakeDime)
+        assertThat(machine.display()).isEqualTo("INSERT COIN")
+        assertThat(machine.coinReturn()).containsExactly(fakeDime)
     }
-    "Insert Nickel twice" {
+
+    @Test
+    fun `Insert Nickel twice`() {
         val machine = VendingMachine()
-                .insert(nickel())
-                .insert(nickel())
+            .insert(nickel())
+            .insert(nickel())
 
-        machine.display() shouldBe "0.10"
-        machine.coinReturn().shouldBeEmpty()
+        assertThat(machine.display()).isEqualTo("0.10")
+        assertThat(machine.coinReturn()).isEmpty()
     }
-    "Insert Dime twice" {
+
+    @Test
+    fun `Insert Dime twice`() {
         val machine = VendingMachine()
-                .insert(dime())
-                .insert(dime())
+            .insert(dime())
+            .insert(dime())
 
-        machine.display() shouldBe "0.20"
-        machine.coinReturn().shouldBeEmpty()
+        assertThat(machine.display()).isEqualTo("0.20")
+        assertThat(machine.coinReturn()).isEmpty()
     }
-    "Insert Nickel and Fake Dime" {
+
+    @Test
+    fun `Insert Nickel and Fake Dime`() {
         val fakeDime = Coin("2.268 g", "17.9 mm")
         val machine = VendingMachine()
-                .insert(fakeDime)
-                .insert(nickel())
+            .insert(fakeDime)
+            .insert(nickel())
 
-        machine.display() shouldBe "0.05"
-        machine.coinReturn().shouldContainAll(fakeDime)
+        assertThat(machine.display()).isEqualTo("0.05")
+        assertThat(machine.coinReturn()).containsExactly(fakeDime)
     }
-})
-
+}
